@@ -1,0 +1,8 @@
+class lcgdm::ns::client (
+) {
+
+  package{"dpm": 
+    ensure => present 
+  }
+
+}
