@@ -42,3 +42,5 @@ RFIO_PORT_RANGE="<%= @portrange %>"
 
 OPTIONS="<%= @startoptions %>"
 
+# - make sure we use globus pthread model$
+export GLOBUS_THREAD_MODEL="pthread"

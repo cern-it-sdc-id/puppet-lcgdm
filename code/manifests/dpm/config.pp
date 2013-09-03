@@ -2,8 +2,8 @@ class lcgdm::dpm::config (
   $host     		= $lcgdm::dpm::params::host,
   $nshost     		= $lcgdm::dpm::params::nshost,
   $dbflavor 		= $lcgdm::dpm::params::dbflavor,
-  $dbuser   		= $lcgdm::dpm::params::dbuser,
-  $dbpass   		= $lcgdm::dpm::params::dbpass,
+  $dbuser,
+  $dbpass,
   $dbhost   		= $lcgdm::dpm::params::dbhost,
   $dbmanage		= $lcgdm::dpm::params::dbmanage,
   $active   		= $lcgdm::dpm::params::active,
@@ -11,13 +11,14 @@ class lcgdm::dpm::config (
   $coredump		= $lcgdm::dpm::params::coredump,
   $syncget		= $lcgdm::dpm::params::syncget,
   $numfthreads		= $lcgdm::dpm::params::numfthreads,
-  $numsthreads		= $lcgdm::dpm::params::numsthreads
+  $numsthreads		= $lcgdm::dpm::params::numsthreads,
+  $configfile   = $lcgdm::dpm::params::configfile
 ) inherits lcgdm::dpm::params {
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 
   file { 
-    "/usr/etc/DPMCONFIG":
+    "$configfile": # "/usr/etc/DPMCONFIG"
       ensure  => present,
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,

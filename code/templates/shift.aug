@@ -13,10 +13,11 @@ module Shift =
   let empty   = [ del /[ \t]*#?[ \t]*\n/ "\n" ]
 
   let word = /[^# \n\t]+/
-  let record = [ seq "component" . indent .
-                              [ label "name" . store  word ] . sep_tab .
+  let words = /[^#\n\t]+/
+
+  let record = [ label "name" . store word . indent . sep_tab .
                               [ label "type" . store word ] .
-                              [ label "value" . sep_spc . store word ]*
+                              (sep_spc . [ label "value" . store words ])?
                  . (comment|eol) ]
 
   let lns = ( empty | comment | record ) *

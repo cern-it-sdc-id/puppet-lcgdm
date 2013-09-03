@@ -9,6 +9,6 @@ class lcgdm::ns::service (
      hasrestart => true,
      hasstatus  => true,
      name       => "${lcgdm::ns::config::daemon}",
-     subscribe  => File["/usr/etc/NSCONFIG", "/etc/sysconfig/${lcgdm::ns::config::daemon}"],
+     subscribe  => File["$configfile", "/etc/sysconfig/${lcgdm::ns::config::daemon}"],
    }
 }

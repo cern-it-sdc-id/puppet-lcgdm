@@ -3,7 +3,7 @@ class lcgdm::ns::install (
 
     Class[Lcgdm::Ns::Config] -> Class[Lcgdm::Ns::Install]
 
-    package { $lcgdm::ns::config::pkg: 
+    package { $lcgdm::ns::config::pkg:
             ensure => present;
     }
 
@@ -21,27 +21,15 @@ class lcgdm::ns::install (
         require => File["/var/log/$lcgdm::ns::config::flavor"];
     }
 
-    # management of a mysql db (maybe this could be improved)
     if $lcgdm::ns::config::dbmanage and $lcgdm::ns::config::dbflavor == "mysql" {
-        include 'mysql'
-
-        # the packaged db script explicitly creates the db, we don't want that
-        file_line { "dpns mysql commentcreate":
-          ensure => present,
-          match  => "CREATE DATABASE.*",
-          line   => "-- CREATE DATABASE.*",
-          path   => "/usr/share/lcgdm/create_dpns_tables_mysql.sql",
-          require=> Package[$lcgdm::ns::config::pkg]
-        }
-          
-        mysql::db{"cns_db":
-          user	   => "$lcgdm::ns::config::dbuser",
-          password => "$lcgdm::ns::config::dbpass",
-          host	   => "$lcgdm::ns::config::dbhost",
-          sql	   => "/usr/share/lcgdm/create_dpns_tables_mysql.sql",
-          require  => [ Class["mysql"], Package[$lcgdm::ns::config::pkg],
-                        File_line["dpns mysql commentcreate"] ]
-        }
-
+      Class[Lcgdm::Ns::Mysql] -> Class[Lcgdm::Ns::Service]
+      class{"lcgdm::ns::mysql":
+        flavor  => $lcgdm::ns::config::flavor,
+        dbuser  => $lcgdm::ns::config::dbuser,
+        dbpass  => $lcgdm::ns::config::dbpass,
+        dbhost  => $lcgdm::ns::config::dbhost,
+        require => Package[$lcgdm::ns::config::pkg]
+      }
     }
+
 }

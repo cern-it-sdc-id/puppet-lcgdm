@@ -9,6 +9,6 @@ class lcgdm::dpm::service (
      hasrestart => true,
      hasstatus  => true,
      name       => "dpm",
-     subscribe  => File["/etc/sysconfig/dpm"],
+     subscribe  => File["$configfile"],
    }
 }

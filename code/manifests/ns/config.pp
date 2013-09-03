@@ -2,8 +2,8 @@ class lcgdm::ns::config (
   $flavor   		= $lcgdm::ns::params::flavor,
   $host     		= $lcgdm::ns::params::host,
   $dbflavor 		= $lcgdm::ns::params::dbflavor,
-  $dbuser   		= $lcgdm::ns::params::dbuser,
-  $dbpass   		= $lcgdm::ns::params::dbpass,
+  $dbuser,
+  $dbpass,
   $dbhost   		= $lcgdm::ns::params::dbhost,
   $dbmanage		= $lcgdm::ns::params::dbmanage,
   $active   		= $lcgdm::ns::params::active,
@@ -11,7 +11,8 @@ class lcgdm::ns::config (
   $disableautovids 	= $lcgdm::ns::params::disableautovids,
   $ulimitn		= $lcgdm::ns::params::ulimitn,
   $coredump		= $lcgdm::ns::params::coredump,
-  $numthreads		= $lcgdm::ns::params::numthreads
+  $numthreads		= $lcgdm::ns::params::numthreads,
+  $configfile  = $lcgdm::ns::params::configfile
 ) inherits lcgdm::ns::params {
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
@@ -26,7 +27,7 @@ class lcgdm::ns::config (
   }
 
   file { 
-    "/usr/etc/NSCONFIG":
+    "$configfile":
       ensure  => present,
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,

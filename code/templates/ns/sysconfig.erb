@@ -39,7 +39,7 @@ NB_THREADS=<%= @numthreads %>
 <%= @flavor.upcase %>DAEMONLOGFILE="/var/log/<%= @flavor %>/log"
 
 # - <%= @flavor.upcase %> configuration file :
-NSCONFIGFILE="/usr/etc/NSCONFIG"
+NSCONFIGFILE="<%= @configfile %>"
 
 # - Initialization of the Catalogue Sync embedded message producer
 # - Comment out to disable the message sending

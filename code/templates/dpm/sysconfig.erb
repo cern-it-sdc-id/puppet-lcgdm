@@ -31,7 +31,7 @@ NB_FTHREADS=<%= @numfthreads %>
 # - Number of DPM slow threads :
 NB_STHREADS=<%= @numsthreads %>
 
-DPMCONFIGFILE=/usr/etc/DPMCONFIG
+DPMCONFIGFILE="<%= @configfile %>"
 
 # - Use DPM synchronous get
 DPM_USE_SYNCGET="<%= @syncget %>"

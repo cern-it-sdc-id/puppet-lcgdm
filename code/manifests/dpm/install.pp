@@ -23,25 +23,13 @@ class lcgdm::dpm::install (
 
     # management of a mysql db (maybe this could be improved)
     if $lcgdm::dpm::config::dbmanage and $lcgdm::dpm::config::dbflavor == "mysql" {
-        include 'mysql'
-
-        # the packaged db script explicitly creates the db, we don't want that
-        file_line { "dpm mysql commentcreate":
-          ensure => present,
-          match  => "CREATE DATABASE.*",
-          line   => "-- CREATE DATABASE.*",
-          path   => "/usr/share/lcgdm/create_dpm_tables_mysql.sql",
-          require=> Package["dpm-server-${lcgdm::dpm::config::dbflavor}"]
-        }
-
-        mysql::db{"dpm_db":
-          user	   => "$lcgdm::dpm::config::dbuser",
-          password => "$lcgdm::dpm::config::dbpass",
-          host	   => "$lcgdm::dpm::config::dbhost",
-          sql	   => "/usr/share/lcgdm/create_dpm_tables_mysql.sql",
-          require  => [ Class["mysql"], Package["dpm-server-${lcgdm::dpm::config::dbflavor}"],
-                        File_line["dpm mysql commentcreate"] ]
-        }
+      Class[Lcgdm::Dpm::Mysql] -> Class[Lcgdm::Dpm::Service]
+      class{"lcgdm::dpm::mysql":
+        dbuser  => $lcgdm::dpm::config::dbuser,
+        dbpass  => $lcgdm::dpm::config::dbpass,
+        dbhost  => $lcgdm::dpm::config::dbhost,
+        require => Package["dpm-server-${lcgdm::dpm::config::dbflavor}"]
+      }
 
     }
 }

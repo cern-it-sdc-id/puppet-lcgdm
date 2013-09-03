@@ -19,7 +19,16 @@ class lcgdm::base::config (
       require    => Group[$user],
   }
 
-  file { 
+  $grid_security_params = {
+    ensure => directory,
+    owner  => root,
+    group  => root,
+    mode   => 0755,
+  }
+
+  ensure_resource('file','/etc/grid-security', $grid_security_params)
+
+  file {
     "/etc/grid-security/$user":
       ensure => directory,
       owner  => $user,
@@ -29,7 +38,7 @@ class lcgdm::base::config (
     "/etc/grid-security/$user/$cert":
       owner   => $user,
       group   => $user,
-      mode    => 644,
+      mode    => 444,
       source  => "/etc/grid-security/hostcert.pem",
       require => User[$user];
     "/etc/grid-security/$user/$certkey":

@@ -4,15 +4,14 @@ class lcgdm::ns::params (
   $flavor  		= "dpns"
   $host    		= $fqdn
   $dbflavor		= "mysql"
-  $dbuser  		= undef
-  $dbpass  		= undef
-  $dbhost  		= undef
-  $dbmanage  		= false
+  $dbhost  		= "localhost"
+  $dbmanage  		= true
   $active		= "yes"
   $readonly		= "no"
   $disableautovids	= "no"
   $ulimitn		= 4096
   $coredump		= "no"
   $numthreads		= 20
+  $configfile  = "/usr/etc/NSCONFIG"
 
 }

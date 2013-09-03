@@ -4,15 +4,14 @@ class lcgdm::dpm::params (
   $host			= $fqdn
   $nshost		= $host
   $dbflavor		= "mysql"
-  $dbuser  		= undef
-  $dbpass  		= undef
-  $dbhost  		= undef
-  $dbmanage  		= false
+  $dbhost  		= "localhost"
+  $dbmanage  		= true
   $active		= "yes"
   $ulimitn		= 4096
   $coredump		= "no"
   $numfthreads		= 20
   $numsthreads		= 20
-  $syncget		= "no"
+  $syncget		= "yes"
+  $configfile = "/usr/etc/DPMCONFIG"
 
 }

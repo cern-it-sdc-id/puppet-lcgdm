@@ -13,7 +13,7 @@ define lcgdm::ns::vo($domain) {
 
     exec { "ns_vo_$domain_$name":
       path        => "/usr/bin:/usr/sbin",
-      environment => ["$envhost=${lcgdm::ns::config::host}", "$envtimeout=1", "$envretry=1", "$envretryint=1"],
+      environment => ["CSEC_MECH=ID", "$envhost=${lcgdm::ns::config::host}", "$envtimeout=1", "$envretry=1", "$envretryint=1"],
       command     => "${lcgdm::ns::config::flavor}-mkdir -p $vopath; ${lcgdm::ns::config::flavor}-chmod 755 $vopath; ${lcgdm::ns::config::flavor}-entergrpmap --group $name; ${lcgdm::ns::config::flavor}-chown root:$name $vopath; ${lcgdm::ns::config::flavor}-chmod 775 $vopath",
       unless      => "${lcgdm::ns::config::flavor}-ls $vopath",
     }
