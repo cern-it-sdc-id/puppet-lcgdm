@@ -3,9 +3,11 @@ class lcgdm::base::install (
 
     Class[Lcgdm::Base::Config] -> Class[Lcgdm::Base::Install]
 
-    package { 
-        "lcgdm-libs": 
+    package {
+        "lcgdm-libs":
             ensure => present;
     }
+
+    ensure_resource('package', 'finger', {'ensure' => 'present'})
 
 }
