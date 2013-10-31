@@ -3,7 +3,8 @@ class lcgdm::base::config (
     $uid      = $lcgdm::base::params::uid,
     $gid      = $lcgdm::base::params::gid,
     $cert     = $lcgdm::base::params::cert,
-    $certkey  = $lcgdm::base::params::certkey
+    $certkey  = $lcgdm::base::params::certkey,
+    $egiCA    = $lcgdm::base::params::egiCA
 ) inherits lcgdm::base::params {
 
   group { $user:
