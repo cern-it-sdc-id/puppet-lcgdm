@@ -8,6 +8,8 @@ class lcgdm::rfio::config (
   $dpmhost      = $lcgdm::rfio::params::dpmhost
 ) inherits lcgdm::rfio::params {
 
+  include('lcgdm::shift::config')
+
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Rfio::Config]
 
   file {
@@ -16,6 +18,17 @@ class lcgdm::rfio::config (
       group  => root,
       mode   => 644,
       content => template("lcgdm/rfio/sysconfig.erb");
+  }
+
+  lcgdm::shift::value{
+    "RFIO RDMT BUFSIZE":
+      component => "RFIO",
+      type      => "DAEMONV3_RDMT_BUFSIZE",
+      value     => 524288;
+    "RFIO BUFSIZE":
+      component => "RFIO",
+      type      => "DAEMONV3_RDSIZE",
+      value     => 524288
   }
 
 }
