@@ -1,7 +1,7 @@
 define lcgdm::shift::trust_value($component=$title, $host, $all=false) {
 
     if $all {
-      value { 
+      value {
         "valuet_$component-$host": component => upcase($component), type => "TRUST", value => $host;
         "valuetr_$component-$host": component => upcase($component), type => "RTRUST", value => $host;
         "valuetw_$component-$host": component => upcase($component), type => "WTRUST", value => $host;
