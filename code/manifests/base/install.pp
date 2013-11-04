@@ -8,11 +8,9 @@ class lcgdm::base::install (
             ensure => present;
     }
 
-    ensure_resource('package', 'finger', {'ensure' => 'present'})
+    ensure_packages(['finger'])
 
     if $lcgdm::base::config::egiCA {
-      ensure_resource('package',
-        'ca-policy-egi-core',
-        {'ensure' => 'present'})
+      ensure_packages(['ca-policy-egi-core'])
     }
 }
