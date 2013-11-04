@@ -7,6 +7,8 @@ class lcgdm::base::config (
     $egiCA    = $lcgdm::base::params::egiCA
 ) inherits lcgdm::base::params {
 
+  include('fetchcrl')
+
   group { $user:
       ensure => present,
       gid    => $gid,
