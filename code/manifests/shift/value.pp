@@ -1,7 +1,8 @@
 define lcgdm::shift::value($component=$title, $type, $value) {
 
     augeas { "shiftvalue_$component-$type-$value":
-      context => "/files/etc/shift.conf",
+      incl    => "/etc/shift.conf",
+      lens    => "shift.aug",
       changes => [
         "rm name[.='$component'][type='$type']",
         "set name[last()+1] $component",
