@@ -23,31 +23,43 @@ class lcgdm::base::config (
   }
 
   $grid_security_params = {
-    ensure => directory,
-    owner  => root,
-    group  => root,
-    mode   => 0755,
+    ensure  => directory,
+    owner   => root,
+    group   => root,
+    mode    => 0755,
+    seluser => "system_u",
+    selrole => "object_r",
+    seltype => "etc_t",
   }
 
   ensure_resource('file','/etc/grid-security', $grid_security_params)
 
   file {
     "/etc/grid-security/$user":
-      ensure => directory,
-      owner  => $user,
-      group  => $user,
-      mode   => 755,
+      ensure  => directory,
+      owner   => $user,
+      group   => $user,
+      mode    => 755,
+      seluser => "system_u",
+      selrole => "object_r",
+      seltype => "etc_t",
       require => User[$user];
     "/etc/grid-security/$user/$cert":
       owner   => $user,
       group   => $user,
       mode    => 444,
+      seluser => "system_u",
+      selrole => "object_r",
+      seltype => "etc_t",
       source  => "/etc/grid-security/hostcert.pem",
       require => User[$user];
     "/etc/grid-security/$user/$certkey":
       owner   => $user,
       group   => $user,
       mode    => 400,
+      seluser => "system_u",
+      selrole => "object_r",
+      seltype => "etc_t",
       source  => "/etc/grid-security/hostkey.pem",
       require => User[$user];
     "/usr/share/augeas/lenses/dist/shift.aug":
@@ -55,6 +67,9 @@ class lcgdm::base::config (
       owner   => root,
       group   => root,
       mode    => 744,
+      seluser => "system_u",
+      selrole => "object_r",
+      seltype => "etc_t",
       content => template("lcgdm/shift.aug");
   }
 
