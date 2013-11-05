@@ -9,17 +9,21 @@ class lcgdm::base::config (
 
   include('fetchcrl')
 
-  group { $user:
+  if ! defined_with_params(User[$user], undef) {
+    group { $user:
       ensure => present,
       gid    => $gid,
+    }
   }
 
-  user { $user:
+  if ! defined_with_params(Group[$group], undef) {
+    user { $user:
       ensure     => present,
       uid        => $uid,
       gid        => $user,
       managehome => true,
       require    => Group[$user],
+    }
   }
 
   $grid_security_params = {
