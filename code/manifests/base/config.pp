@@ -22,17 +22,20 @@ class lcgdm::base::config (
       require    => Group[$user],
   }
 
-  $grid_security_params = {
-    ensure  => directory,
-    owner   => root,
-    group   => root,
-    mode    => 0755,
-    seluser => "system_u",
-    selrole => "object_r",
-    seltype => "etc_t",
+  # define only if it doesn't exist,
+  # no matter the parameters
+  if ! defined_with_params(File['/etc/grid-security'], '') {
+    file {
+      '/etc/grid-security':
+        ensure  => directory,
+        owner   => root,
+        group   => root,
+        mode    => 0755,
+        seluser => "system_u",
+        selrole => "object_r",
+        seltype => "etc_t",
+    }
   }
-
-  ensure_resource('file','/etc/grid-security', $grid_security_params)
 
   file {
     "/etc/grid-security/$user":
