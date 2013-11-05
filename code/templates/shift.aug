@@ -13,7 +13,7 @@ module Shift =
   let empty   = [ del /[ \t]*#?[ \t]*\n/ "\n" ]
 
   let word = /[^# \n\t]+/
-  let words = /[^#\n\t]+/
+  let words = word . ( sep_spc . word) *
 
   let record = [ label "name" . store word . indent . sep_tab .
                               [ label "type" . store word ] .
