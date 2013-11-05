@@ -13,5 +13,6 @@ class lcgdm::dpm::params (
   $numsthreads		= 20
   $syncget		= "yes"
   $configfile = "/usr/etc/DPMCONFIG"
+  $reqcleantimeout = "3m"
 
 }

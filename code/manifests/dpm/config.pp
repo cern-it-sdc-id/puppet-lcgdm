@@ -1,18 +1,19 @@
 class lcgdm::dpm::config (
-  $host         = $lcgdm::dpm::params::host,
-  $nshost       = $lcgdm::dpm::params::nshost,
-  $dbflavor     = $lcgdm::dpm::params::dbflavor,
+  $host            = $lcgdm::dpm::params::host,
+  $nshost          = $lcgdm::dpm::params::nshost,
+  $dbflavor        = $lcgdm::dpm::params::dbflavor,
   $dbuser,
   $dbpass,
-  $dbhost       = $lcgdm::dpm::params::dbhost,
-  $dbmanage     = $lcgdm::dpm::params::dbmanage,
-  $active       = $lcgdm::dpm::params::active,
-  $ulimitn      = $lcgdm::dpm::params::ulimitn,
-  $coredump     = $lcgdm::dpm::params::coredump,
-  $syncget      = $lcgdm::dpm::params::syncget,
-  $numfthreads  = $lcgdm::dpm::params::numfthreads,
-  $numsthreads  = $lcgdm::dpm::params::numsthreads,
-  $configfile   = $lcgdm::dpm::params::configfile
+  $dbhost          = $lcgdm::dpm::params::dbhost,
+  $dbmanage        = $lcgdm::dpm::params::dbmanage,
+  $active          = $lcgdm::dpm::params::active,
+  $ulimitn         = $lcgdm::dpm::params::ulimitn,
+  $coredump        = $lcgdm::dpm::params::coredump,
+  $syncget         = $lcgdm::dpm::params::syncget,
+  $numfthreads     = $lcgdm::dpm::params::numfthreads,
+  $numsthreads     = $lcgdm::dpm::params::numsthreads,
+  $configfile      = $lcgdm::dpm::params::configfile,
+  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout
 ) inherits lcgdm::dpm::params {
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
@@ -30,6 +31,12 @@ class lcgdm::dpm::config (
       group   => root,
       mode    => 644,
       content => template("lcgdm/dpm/sysconfig.erb");
+  }
+
+  lcgdm::shift::value {"DPM REQCLEAN":
+    component => "DPM",
+    type      => "REQCLEAN",
+    value     => "${reqcleantimeout}"
   }
 
 }
