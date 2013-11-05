@@ -16,10 +16,10 @@ class lcgdm::ns::mysql (
   }
 
   mysql::db{"cns_db":
-    user	   => "${dbuser}",
+    user     => "${dbuser}",
     password => "${dbpass}",
-    host	   => "${dbhost}",
-    sql	   => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql",
+    host     => "${dbhost}",
+    sql      => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql",
     require  => File_line["${flavor} mysql commentcreate"]
   }
 }

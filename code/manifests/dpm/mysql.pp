@@ -14,10 +14,10 @@ class lcgdm::dpm::mysql (
   }
 
   mysql::db{"dpm_db":
-    user	   => "${dbuser}",
+    user     => "${dbuser}",
     password => "${dbpass}",
-    host	   => "${dbhost}",
-    sql	   => "/usr/share/lcgdm/create_dpm_tables_mysql.sql",
+    host     => "${dbhost}",
+    sql      => "/usr/share/lcgdm/create_dpm_tables_mysql.sql",
     require  => File_line["dpm mysql commentcreate"]
   }
 }
