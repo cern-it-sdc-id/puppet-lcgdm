@@ -13,9 +13,9 @@ module Shift =
   let empty   = [ del /[ \t]*#?[ \t]*\n/ "\n" ]
 
   let word = /[^# \n\t]+/
-  let words = /[^#\n\t]+/
+  let words = /[^# \n\t]([^#\n\t]*[^# \n\t])?/
 
-  let record = [ label "name" . store word . indent . sep_tab .
+  let record = [ label "name" . store word . sep_tab .
                               [ label "type" . store word ] .
                               (sep_spc . [ label "value" . store words ])?
                  . (comment|eol) ]
