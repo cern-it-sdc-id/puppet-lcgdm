@@ -1,4 +1,5 @@
 define lcgdm::shift::entry($component, $type) {
+  include('lcgdm::shift::config')
 
   augeas { "shiftentry_${component}-${type}":
     context => "/files/etc/shift.conf",
