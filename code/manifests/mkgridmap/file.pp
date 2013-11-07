@@ -30,7 +30,8 @@ define lcgdm::mkgridmap::file (
   $groupmap     = undef,
   $localmap     = undef
 ) {
-  
+  include('lcgdm::mkgridmap::install')
+
   Class[Lcgdm::Mkgridmap::Install] -> Lcgdm::Mkgridmap::File<| |>
 
   cron {"${configfile}-cron":
