@@ -14,6 +14,7 @@ class lcgdm::ns::config (
   $numthreads		= $lcgdm::ns::params::numthreads,
   $configfile  = $lcgdm::ns::params::configfile
 ) inherits lcgdm::ns::params {
+  include('lcgdm::base')
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
 
@@ -26,7 +27,7 @@ class lcgdm::ns::config (
            $pkg = "lfc-server-${dbflavor}" $clientpkg = "lfc" }
   }
 
-  file { 
+  file {
     "$configfile":
       ensure  => present,
       owner   => $lcgdm::base::config::user,

@@ -15,6 +15,7 @@ class lcgdm::dpm::config (
   $configfile      = $lcgdm::dpm::params::configfile,
   $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout
 ) inherits lcgdm::dpm::params {
+  include('lcgdm::base')
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 
