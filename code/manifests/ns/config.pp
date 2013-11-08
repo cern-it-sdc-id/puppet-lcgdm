@@ -1,18 +1,18 @@
 class lcgdm::ns::config (
-  $flavor   		= $lcgdm::ns::params::flavor,
-  $host     		= $lcgdm::ns::params::host,
-  $dbflavor 		= $lcgdm::ns::params::dbflavor,
+  $flavor          = $lcgdm::ns::params::flavor,
+  $host            = $lcgdm::ns::params::host,
+  $dbflavor        = $lcgdm::ns::params::dbflavor,
   $dbuser,
   $dbpass,
-  $dbhost   		= $lcgdm::ns::params::dbhost,
-  $dbmanage		= $lcgdm::ns::params::dbmanage,
-  $active   		= $lcgdm::ns::params::active,
-  $readonly 		= $lcgdm::ns::params::readonly,
-  $disableautovids 	= $lcgdm::ns::params::disableautovids,
-  $ulimitn		= $lcgdm::ns::params::ulimitn,
-  $coredump		= $lcgdm::ns::params::coredump,
-  $numthreads		= $lcgdm::ns::params::numthreads,
-  $configfile  = $lcgdm::ns::params::configfile
+  $dbhost          = $lcgdm::ns::params::dbhost,
+  $dbmanage        = $lcgdm::ns::params::dbmanage,
+  $active          = $lcgdm::ns::params::active,
+  $readonly        = $lcgdm::ns::params::readonly,
+  $disableautovids = $lcgdm::ns::params::disableautovids,
+  $ulimitn         = $lcgdm::ns::params::ulimitn,
+  $coredump        = $lcgdm::ns::params::coredump,
+  $numthreads      = $lcgdm::ns::params::numthreads,
+  $configfile      = $lcgdm::ns::params::configfile
 ) inherits lcgdm::ns::params {
   include('lcgdm::base')
 
