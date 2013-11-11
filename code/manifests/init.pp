@@ -36,6 +36,7 @@ class lcgdm (
   #
   # Create path for domain and VOs to be enabled.
   #
+  validate_array($volist)
   lcgdm::ns::domain{"${domain}":}
   lcgdm::ns::vo{$volist:
     domain => "${domain}",
