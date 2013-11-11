@@ -12,7 +12,7 @@ class lcgdm::ns (
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
-    dbmanage => "${dbmanage}",
+    dbmanage => $dbmanage,
   }
   class{"lcgdm::ns::install":}
   class{"lcgdm::ns::service":}

@@ -10,7 +10,7 @@ class lcgdm::dpm (
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
-    dbmanage => "${dbmanage}",
+    dbmanage => $dbmanage,
   }
   class{"lcgdm::dpm::install":}
   class{"lcgdm::dpm::service":}
