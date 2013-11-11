@@ -21,7 +21,7 @@ class lcgdm::dpm::install (
         require => File["/var/log/dpm"];
     }
 
-    # management of a mysql db (maybe this could be improved)
+    validate_bool($lcgdm::dpm::config::dbmanage)
     if $lcgdm::dpm::config::dbmanage and $lcgdm::dpm::config::dbflavor == "mysql" {
       Class[Lcgdm::Dpm::Mysql] -> Class[Lcgdm::Dpm::Service]
       class{"lcgdm::dpm::mysql":

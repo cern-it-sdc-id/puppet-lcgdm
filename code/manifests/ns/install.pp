@@ -21,6 +21,7 @@ class lcgdm::ns::install (
         require => File["/var/log/$lcgdm::ns::config::flavor"];
     }
 
+    validate_bool($lcgdm::ns::config::dbmanage)
     if $lcgdm::ns::config::dbmanage and $lcgdm::ns::config::dbflavor == "mysql" {
       Class[Lcgdm::Ns::Mysql] -> Class[Lcgdm::Ns::Service]
       class{"lcgdm::ns::mysql":
