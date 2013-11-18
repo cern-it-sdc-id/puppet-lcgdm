@@ -12,7 +12,8 @@ class lcgdm::ns::config (
   $ulimitn         = $lcgdm::ns::params::ulimitn,
   $coredump        = $lcgdm::ns::params::coredump,
   $numthreads      = $lcgdm::ns::params::numthreads,
-  $configfile      = $lcgdm::ns::params::configfile
+  $configfile      = $lcgdm::ns::params::configfile,
+  $logpermissions  = $lcgdm::ns::params::logpermissions
 ) inherits lcgdm::ns::params {
   include('lcgdm::base')
 

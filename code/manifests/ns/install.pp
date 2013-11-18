@@ -12,12 +12,12 @@ class lcgdm::ns::install (
         ensure  => directory,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 755;
+        mode    => $lcgdm::ns::config::logpermissions;
       "/var/log/$lcgdm::ns::config::flavor/log":
         ensure  => present,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 600,
+        mode    => $lcgdm::ns::config::logpermissions,
         require => File["/var/log/$lcgdm::ns::config::flavor"];
     }
 
