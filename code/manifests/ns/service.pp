@@ -5,7 +5,7 @@ $dbflavor        = $lcgdm::ns::params::dbflavor
 
    Class[Lcgdm::Ns::Install] -> Class[Lcgdm::Ns::Service]
 
-   if $dbflavor == "mysql" && $dbmanage == 'true' {
+   if $dbflavor == "mysql" and $dbmanage == 'true' {
 
    	Class[Lcgdm::Ns::Mysql] ~> Class[Lcgdm::Ns::Service]
 
