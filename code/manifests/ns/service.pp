@@ -2,6 +2,8 @@ class lcgdm::ns::service (
 ) inherits lcgdm::ns::params {
 
    Class[Lcgdm::Ns::Install] -> Class[Lcgdm::Ns::Service]
+   Class[Lcgdm::Ns::Mysql] ~> Class[Lcgdm::Ns::Service]
+
 
    service { "${lcgdm::ns::config::daemon}":
      enable     => true,
