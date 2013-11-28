@@ -16,5 +16,7 @@ class lcgdm::ns (
   }
   class{"lcgdm::ns::install":}
   class{"lcgdm::ns::service":}
-  class{"lcgdm::ns::client":}
+  class{"lcgdm::ns::client":
+    flavor => "${flavor}"
+  }
 }
