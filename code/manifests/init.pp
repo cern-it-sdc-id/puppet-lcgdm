@@ -6,6 +6,7 @@ class lcgdm (
   $flavor   = "dpns",
   $dbflavor = "mysql",
   $dbhost   = "localhost",
+  $coredump = "no",
 ) {
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Dpm::Service]
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Ns::Client]
@@ -21,6 +22,7 @@ class lcgdm (
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
+    coredump => "${coredump}",
   }
 
   #
@@ -31,6 +33,7 @@ class lcgdm (
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
+    coredump => "${coredump}",
   }
 
   #
