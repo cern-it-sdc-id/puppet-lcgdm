@@ -2,10 +2,8 @@ class lcgdm::bdii::dpm (
   $sitename = undef,
   $basedir  = "home",
   $vos      = [],
-  $glue2    = true,
-  $dpm_host = $lcgdm::dpm::config::host,
+  $glue2    = true
 ) {
-  Class[Lcgdm::Dpm::Config] -> Class[Lcgdm::Bdii::Dpm]
 
   file {"/var/lib/bdii/gip/provider/se-dpm":
     owner => root,
@@ -23,7 +21,7 @@ dpm-listspaces --gip --protocols --basedir <%= @basedir %> --site <%= @sitename 
     group => root,
     mode  => 755,
     content => inline_template("
-glite-info-service /var/lib/bdii/gip/glite-info-service-srm2.2.conf <%= @sitename %> httpg://<%= @dpm_host %>:8446/srm/managerv2
+glite-info-service /var/lib/bdii/gip/glite-info-service-srm2.2.conf <%= @sitename %> httpg://$::fqdn:8446/srm/managerv2
     ")
   }
 
