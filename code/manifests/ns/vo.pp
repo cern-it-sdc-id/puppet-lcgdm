@@ -18,4 +18,10 @@ define lcgdm::ns::vo($domain) {
       unless      => "${lcgdm::ns::config::flavor}-ls $vopath",
     }
 
+   exec {"ns_vopath_setacl-$name":
+       path        => "/usr/bin:/usr/sbin:/bin",
+       environment => ["CSEC_MECH=ID", "$envhost=${lcgdm::ns::config::host}", "$envtimeout=1", "$envretry=1", "$envretryint=1"],
+       command     => "${lcgdm::ns::config::flavor}-setacl -m d:u::7,d:g::7,d:o:5 $vopath",
+       unless      => "${lcgdm::ns::config::flavor}-getacl -d $vopath |  grep user::",
+     }
 }
