@@ -5,6 +5,7 @@ class lcgdm::ns (
   $dbpass,
   $dbhost          = $lcgdm::ns::params::dbhost,
   $dbmanage        = $lcgdm::ns::params::dbmanage,
+  $coredump        = $lcgdm::ns::params::coredump,
 ) inherits lcgdm::ns::params {
   class{"lcgdm::ns::config":
     flavor   => "${flavor}",
@@ -13,8 +14,11 @@ class lcgdm::ns (
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
     dbmanage => $dbmanage,
+    coredump => "${coredump}",
   }
   class{"lcgdm::ns::install":}
   class{"lcgdm::ns::service":}
-  class{"lcgdm::ns::client":}
+  class{"lcgdm::ns::client":
+    flavor => "${flavor}"
+  }
 }

@@ -34,7 +34,7 @@ NB_STHREADS=<%= @numsthreads %>
 DPMCONFIGFILE="<%= @configfile %>"
 
 # - Use DPM synchronous get
-DPM_USE_SYNCGET="<%= @syncget %>"
+export DPM_USE_SYNCGET="<%= @syncget %>"
 
 <% if @dbflavor == "oracle" %>
 #############################

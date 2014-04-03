@@ -1,5 +1,5 @@
 name    'lcgdm-lcgdm'
-version '0.0.4'
+version '0.1.0'
 source 'UNKNOWN'
 author 'LCGDM'
 license 'Apache License, Version 2.0'
@@ -9,5 +9,5 @@ project_page 'https://svnweb.cern.ch/trac/lcgdm'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
-dependency 'lcgdm/fetchcrl'
+dependency 'CERNOps/fetchcrl'
 dependency 'puppetlabs/stdlib'
