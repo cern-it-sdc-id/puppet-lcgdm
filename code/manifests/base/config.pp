@@ -15,9 +15,9 @@ class lcgdm::base::config (
   }
 
   exec {"create_lcgdm_user":
-    command     => "useradd ${user} -u ${uid} -g ${gid}",
+    command     => "/usr/sbin/useradd ${user} -u ${uid} -g ${gid}",
     environment => "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
-    unless      => "id -u ${user}"
+    unless      => "/usr/bin/id -u ${user}"
   }
   # this is complicated and fails, when the user already
   # exists with another UID. puppet tries to recreate
