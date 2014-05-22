@@ -26,7 +26,8 @@ class lcgdm::dpm::config (
       group   => $lcgdm::base::config::user,
       mode    => 600,
       content => template("lcgdm/dpm/config.erb"),
-      require => User[$lcgdm::base::config::user];
+      #require => User[$lcgdm::base::config::user];
+      require  => Exec["create_lcgdm_user"];
     "/etc/sysconfig/dpm":
       owner   => root,
       group   => root,

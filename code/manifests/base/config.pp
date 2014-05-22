@@ -14,13 +14,23 @@ class lcgdm::base::config (
       gid    => $gid,
   }
 
-  user { $user:
-      ensure     => present,
-      uid        => $uid,
-      gid        => $user,
-      managehome => true,
-      require    => Group[$user],
+  exec {"create_lcgdm_user":
+    command     => "useradd ${user} -u ${uid} -g ${gid}",
+    environment => "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
+    unless      => "id -u ${user}"
   }
+  # this is complicated and fails, when the user already
+  # exists with another UID. puppet tries to recreate
+  # the user then, which would probably result in a
+  # mess. don't know if files that the user owned would
+  # get converted and it fails if the user is logged in.
+  #user { $user:
+  #    ensure     => present,
+  #    uid        => $uid,
+  #    gid        => $gid,
+  #    managehome => true,
+  #    require    => Group[$user],
+  #}
 
   # define only if it doesn't exist,
   # no matter the parameters
@@ -39,14 +49,15 @@ class lcgdm::base::config (
 
   file {
     "/etc/grid-security/$user":
-      ensure  => directory,
-      owner   => $user,
-      group   => $user,
-      mode    => 755,
-      seluser => "system_u",
-      selrole => "object_r",
-      seltype => "etc_t",
-      require => User[$user];
+      ensure   => directory,
+      owner    => $user,
+      group    => $user,
+      mode     => 755,
+      seluser  => "system_u",
+      selrole  => "object_r",
+      seltype  => "etc_t",
+      #require => User[$user];
+      require  => Exec["create_lcgdm_user"];
     "/etc/grid-security/$user/$cert":
       owner   => $user,
       group   => $user,
@@ -55,7 +66,8 @@ class lcgdm::base::config (
       selrole => "object_r",
       seltype => "etc_t",
       source  => "/etc/grid-security/hostcert.pem",
-      require => User[$user];
+      #require => User[$user];
+      require  => Exec["create_lcgdm_user"];
     "/etc/grid-security/$user/$certkey":
       owner   => $user,
       group   => $user,
@@ -64,7 +76,8 @@ class lcgdm::base::config (
       selrole => "object_r",
       seltype => "etc_t",
       source  => "/etc/grid-security/hostkey.pem",
-      require => User[$user];
+      #require => User[$user];
+      require  => Exec["create_lcgdm_user"];
     "/usr/share/augeas/lenses/dist/shift.aug":
       ensure  => present,
       owner   => root,
