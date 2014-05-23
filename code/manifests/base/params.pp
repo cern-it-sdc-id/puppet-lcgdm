@@ -7,8 +7,8 @@ class lcgdm::base::params {
     $user     = "dpmmgr"
     $cert     = "dpmcert.pem"
     $certkey  = "dpmkey.pem"
-    $uid      = 151
-    $gid      = 151
+    $uid      = undef
+    $gid      = undef
 
     $egiCA    = true
 }
