@@ -35,8 +35,7 @@ class lcgdm::ns::config (
       group   => $lcgdm::base::config::user,
       mode    => 600,
       content => template("lcgdm/ns/config.erb"),
-      #require => User[$lcgdm::base::config::user];
-      require  => Exec["create_lcgdm_user"];
+      require => User[$lcgdm::base::config::user];
     "/etc/sysconfig/$daemon":
       owner  => root,
       group  => root,
