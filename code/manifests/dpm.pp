@@ -10,6 +10,9 @@ class lcgdm::dpm (
   if $staticuid {
     $dpmuid = 151
     $dpmgid = 151
+  } else {
+    $dpmuid = undef
+    $dpmgid = undef
   }
   class{"lcgdm::dpm::config":
     dbflavor => "${dbflavor}",
