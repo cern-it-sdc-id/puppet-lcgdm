@@ -2,7 +2,7 @@ class lcgdm::rfio (
   $dpmhost = "${::fqdn}",
   $nshost  = "${dpmhost}",
 ) {
-  include('lcgdm::base')
+  #include('lcgdm::base')
 
   class{"lcgdm::rfio::config":
     dpmhost => "${dpmhost}",

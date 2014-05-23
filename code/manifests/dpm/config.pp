@@ -13,11 +13,15 @@ class lcgdm::dpm::config (
   $numfthreads     = $lcgdm::dpm::params::numfthreads,
   $numsthreads     = $lcgdm::dpm::params::numsthreads,
   $configfile      = $lcgdm::dpm::params::configfile,
-  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout
+  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout,
+  $dpmuid          = $lcgdm::base::params::uid,
+  $dpmgid          = $lcgdm::base::params::gid
 ) inherits lcgdm::dpm::params {
-  include('lcgdm::base')
+  #include('lcgdm::base')
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
+
+  ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
 
   file {
     "$configfile": # "/usr/etc/DPMCONFIG"

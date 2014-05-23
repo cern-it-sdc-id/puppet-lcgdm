@@ -13,11 +13,15 @@ class lcgdm::ns::config (
   $coredump        = $lcgdm::ns::params::coredump,
   $numthreads      = $lcgdm::ns::params::numthreads,
   $configfile      = $lcgdm::ns::params::configfile,
-  $logpermissions  = $lcgdm::ns::params::logpermissions
+  $logpermissions  = $lcgdm::ns::params::logpermissions,
+  $dpmuid          = $lcgdm::base::params::uid,
+  $dpmgid          = $lcgdm::base::params::gid
 ) inherits lcgdm::ns::params {
-  include('lcgdm::base')
+  #include('lcgdm::base')
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
+
+  ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
 
   case $flavor {
     cns: { $daemon = "nsdaemon" $envvar = "CNS" $basepath = "castor"
