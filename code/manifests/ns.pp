@@ -11,6 +11,9 @@ class lcgdm::ns (
   if $staticuid {
     $dpmuid = 151
     $dpmgid = 151
+  } else {
+    $dpmuid = undef
+    $dpmgid = undef
   }
   class{"lcgdm::ns::config":
     flavor   => "${flavor}",
