@@ -21,7 +21,11 @@ class lcgdm::ns::config (
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
 
-  ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
+  if $dpmuid {
+    ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
+  } else {
+    ensure_resource('class', 'lcgdm::base', { })
+  }
 
   case $flavor {
     cns: { $daemon = "nsdaemon" $envvar = "CNS" $basepath = "castor"
