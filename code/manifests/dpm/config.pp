@@ -21,7 +21,11 @@ class lcgdm::dpm::config (
 
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 
-  ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
+  if $dpmuid {
+    ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
+  } else {
+    ensure_resource('class', 'lcgdm::base', { })
+  }
 
   file {
     "$configfile": # "/usr/etc/DPMCONFIG"
