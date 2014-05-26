@@ -17,15 +17,7 @@ class lcgdm::dpm::config (
   $dpmuid          = $lcgdm::base::params::uid,
   $dpmgid          = $lcgdm::base::params::gid
 ) inherits lcgdm::dpm::params {
-  #include('lcgdm::base')
-
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
-
-  if $dpmuid {
-    ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
-  } else {
-    ensure_resource('class', 'lcgdm::base', { })
-  }
 
   file {
     "$configfile": # "/usr/etc/DPMCONFIG"
