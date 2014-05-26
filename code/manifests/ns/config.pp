@@ -17,15 +17,7 @@ class lcgdm::ns::config (
   $dpmuid          = $lcgdm::base::params::uid,
   $dpmgid          = $lcgdm::base::params::gid
 ) inherits lcgdm::ns::params {
-  #include('lcgdm::base')
-
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
-
-  if $dpmuid {
-    ensure_resource('class', 'lcgdm::base', { uid => $dpmuid, gid => $dpmgid, })
-  } else {
-    ensure_resource('class', 'lcgdm::base', { })
-  }
 
   case $flavor {
     cns: { $daemon = "nsdaemon" $envvar = "CNS" $basepath = "castor"
