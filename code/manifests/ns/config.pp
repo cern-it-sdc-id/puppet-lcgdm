@@ -14,8 +14,6 @@ class lcgdm::ns::config (
   $numthreads      = $lcgdm::ns::params::numthreads,
   $configfile      = $lcgdm::ns::params::configfile,
   $logpermissions  = $lcgdm::ns::params::logpermissions,
-  $dpmuid          = $lcgdm::base::params::uid,
-  $dpmgid          = $lcgdm::base::params::gid
 ) inherits lcgdm::ns::params {
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Ns::Config]
 
