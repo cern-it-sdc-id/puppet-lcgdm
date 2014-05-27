@@ -20,8 +20,10 @@ class lcgdm (
   #
   # Base configuration
   #
-  class{"lcgdm::base":
-    uid => $uid,
+  if !defined(Class["Lcgdm::Base"]) {
+    class{"lcgdm::base":
+      uid => $uid,
+    }
   }
 
   #
