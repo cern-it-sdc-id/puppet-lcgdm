@@ -13,9 +13,7 @@ class lcgdm::dpm::config (
   $numfthreads     = $lcgdm::dpm::params::numfthreads,
   $numsthreads     = $lcgdm::dpm::params::numsthreads,
   $configfile      = $lcgdm::dpm::params::configfile,
-  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout,
-  $dpmuid          = $lcgdm::base::params::uid,
-  $dpmgid          = $lcgdm::base::params::gid
+  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout
 ) inherits lcgdm::dpm::params {
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 

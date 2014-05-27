@@ -6,15 +6,7 @@ class lcgdm::ns (
   $dbhost          = $lcgdm::ns::params::dbhost,
   $dbmanage        = $lcgdm::ns::params::dbmanage,
   $coredump        = $lcgdm::ns::params::coredump,
-  $staticuid       = false,
 ) inherits lcgdm::ns::params {
-  if $staticuid {
-    $dpmuid = 151
-    $dpmgid = 151
-  } else {
-    $dpmuid = undef
-    $dpmgid = undef
-  }
   class{"lcgdm::ns::config":
     flavor   => "${flavor}",
     dbflavor => "${dbflavor}",
@@ -23,8 +15,6 @@ class lcgdm::ns (
     dbhost   => "${dbhost}",
     dbmanage => $dbmanage,
     coredump => "${coredump}",
-    dpmuid   => $dpmuid,
-    dpmgid   => $dpmgid,
   }
   class{"lcgdm::ns::install":}
   class{"lcgdm::ns::service":}

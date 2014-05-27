@@ -1,10 +1,9 @@
 class lcgdm::base (
-  $dpmuid          = $lcgdm::base::params::uid,
-  $dpmgid          = $lcgdm::base::params::gid
+  $uid          = $lcgdm::base::params::uid,
 ) inherits lcgdm::dpm::params {
   class{"lcgdm::base::config":
-    uid => $dpmuid,
-    gid => $dpmgid,
+    uid => $uid,
+    gid => $uid,
   }
   class{"lcgdm::base::install":}
 }
