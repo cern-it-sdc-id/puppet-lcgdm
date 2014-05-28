@@ -37,6 +37,7 @@ class lcgdm (
     dbhost   => "${dbhost}",
     coredump => "${coredump}",
     dbmanage => $dbmanage,
+    uid      => $uid,
   }
 
   #
