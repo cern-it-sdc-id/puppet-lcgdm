@@ -9,7 +9,7 @@ class lcgdm::dpm::params (
   $active           = "yes"
   $ulimitn          = 4096
   $coredump         = "no"
-  $numfthreads      = 20
+  $numfthreads      = 60
   $numsthreads      = 20
   $syncget          = "yes"
   $configfile       = "/usr/etc/DPMCONFIG"
