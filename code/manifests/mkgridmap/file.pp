@@ -51,7 +51,7 @@ define lcgdm::mkgridmap::file (
       mode   => 644,
       content => inline_template("
 <% if @groupmap -%>
-<% groupmap.sort.each do |uri, vo| %>\ngroup <%= uri %> <%= vo %><% end %>
+<% @groupmap.sort.each do |uri, vo| %>\ngroup <%= uri %> <%= vo %><% end %>
 <% end -%>
 gmf_local <%= @localmapfile %>
       ");
@@ -67,7 +67,7 @@ gmf_local <%= @localmapfile %>
       mode   => 644,
       content => inline_template("\
 <% if @localmap -%>\
-<% localmap.sort.each do |key, value| %>\"<%= key %>\" <%= value %>\n<% end %>
+<% @localmap.sort.each do |key, value| %>\"<%= key %>\" <%= value %>\n<% end %>
 <% end -%>")
   }
 
