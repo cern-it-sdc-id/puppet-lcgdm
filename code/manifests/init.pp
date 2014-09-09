@@ -56,15 +56,9 @@ class lcgdm (
   # Create path for domain and VOs to be enabled.
   #
   validate_array($volist)
-  
-  #In case of lfc we use as domain the vos, cause the namespace is different
-  if $flavor == "lfc" {
-	lcgdm::ns::domain{$volist:}
-   }
-  else {
-	lcgdm::ns::domain{"${domain}":}
-	lcgdm::ns::vo{$volist:
+
+  lgdm::ns::domain{"${domain}":}
+  lcgdm::ns::vo{$volist:
     	domain => "${domain}",
-     }
   }
 }
