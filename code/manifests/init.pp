@@ -57,7 +57,7 @@ class lcgdm (
   #
   validate_array($volist)
 
-  lgdm::ns::domain{"${domain}":}
+  lcgdm::ns::domain{"${domain}":}
   lcgdm::ns::vo{$volist:
     	domain => "${domain}",
   }
