@@ -58,7 +58,7 @@ class lcgdm (
   validate_array($volist)
   
   #In case of lfc we use as domain the vos, cause the namespace is different
-  if $lcgdm::ns::config::dbflavor == "lfc" {
+  if $flavor == "lfc" {
 	lcgdm::ns::domain{$volist:}
    }
   else {
