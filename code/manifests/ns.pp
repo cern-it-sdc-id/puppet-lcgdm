@@ -7,6 +7,7 @@ class lcgdm::ns (
   $dbmanage        = $lcgdm::ns::params::dbmanage,
   $coredump        = $lcgdm::ns::params::coredump,
   $uid             = undef,
+  $gid             = undef,
 ) inherits lcgdm::ns::params {
 
   validate_bool($dbmanage)
@@ -17,6 +18,7 @@ class lcgdm::ns (
   if !defined(Class["Lcgdm::Base"]) {
     class{"lcgdm::base":
       uid => $uid,
+      gid => $gid,
     }
   }
 

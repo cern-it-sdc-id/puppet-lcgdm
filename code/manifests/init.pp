@@ -9,6 +9,7 @@ class lcgdm (
   $coredump = "no",
   $dbmanage = true,
   $uid      = undef,
+  $gid      = undef,
 ) {
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Dpm::Service]
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Ns::Client]
@@ -21,25 +22,48 @@ class lcgdm (
   # Base configuration
   #
   if !defined(Class["Lcgdm::Base"]) {
+    if gid != undef { 
     class{"lcgdm::base":
       uid => $uid,
+      gid => $gid,
     }
+   } else {
+    class{"lcgdm::base":
+      uid => $uid,
+      gid => $uid,
+    }
+  }
+
   }
 
   #
   # Nameserver client and server configuration.
   #
-  class{"lcgdm::ns":
-    flavor   => "${flavor}",
-    dbflavor => "${dbflavor}",
-    dbuser   => "${dbuser}",
-    dbpass   => "${dbpass}",
-    dbhost   => "${dbhost}",
-    coredump => "${coredump}",
-    dbmanage => $dbmanage,
-    uid      => $uid,
+  if gid != undef {
+    class{"lcgdm::ns":
+    	flavor   => "${flavor}",
+    	dbflavor => "${dbflavor}",
+    	dbuser   => "${dbuser}",
+    	dbpass   => "${dbpass}",
+   	dbhost   => "${dbhost}",
+   	coredump => "${coredump}",
+    	dbmanage => $dbmanage,
+    	uid      => $uid,
+   	gid      => $gid,
+    }
+  } else {
+    class{"lcgdm::ns":
+    	flavor   => "${flavor}",
+    	dbflavor => "${dbflavor}",
+    	dbuser   => "${dbuser}",
+    	dbpass   => "${dbpass}",
+    	dbhost   => "${dbhost}",
+    	coredump => "${coredump}",
+    	dbmanage => $dbmanage,
+    	uid      => $uid,
+    	gid      => $gid,
+  	}
   }
-
   #
   # DPM daemon configuration.
   #
