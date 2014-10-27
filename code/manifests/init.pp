@@ -61,7 +61,7 @@ class lcgdm (
     	coredump => "${coredump}",
     	dbmanage => $dbmanage,
     	uid      => $uid,
-    	gid      => $gid,
+    	gid      => $uid,
   	}
   }
   #
