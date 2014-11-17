@@ -17,7 +17,7 @@ class lcgdm::rfio::install (
         ensure  => present,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 600,
+        mode    => 644,
         require => File["/var/log/rfio"];
     }
 }
