@@ -13,6 +13,6 @@ class lcgdm::ns::params (
   $coredump         = "no"
   $numthreads       = 20
   $configfile       = "/usr/etc/NSCONFIG"
-  $logpermissions   = 0640
+  $logpermissions   = 0644
 
 }
