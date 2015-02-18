@@ -9,9 +9,9 @@ class lcgdm::ns::params (
   $active           = "yes"
   $readonly         = "no"
   $disableautovids  = "no"
-  $ulimitn          = 4096
-  $coredump         = "no"
-  $numthreads       = 20
+  $ulimitn          = hiera("lcgdm::ns::ulimitn", 65000)
+  $coredump         = hiera("lcgdm::ns::coredump", "no")
+  $numthreads       = hiera("lcgdm::ns::numthreads", 80)
   $configfile       = "/usr/etc/NSCONFIG"
   $logpermissions   = 0644
 
