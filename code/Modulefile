@@ -1,0 +1,13 @@
+name    'lcgdm-lcgdm'
+version '0.2.5'
+source 'UNKNOWN'
+author 'LCGDM'
+license 'Apache License, Version 2.0'
+summary 'Package for managing lcgdm components'
+description 'This package provides modules for managing lcgdm components'
+project_page 'https://svnweb.cern.ch/trac/lcgdm'
+
+## Add dependencies, if any:
+# dependency 'username/name', '>= 1.2.0'
+dependency 'CERNOps/fetchcrl', '>= 0.1.0'
+dependency 'puppetlabs/stdlib', '>= 2.0.0'

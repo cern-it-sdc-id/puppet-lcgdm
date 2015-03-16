@@ -1,0 +1,44 @@
+# should rfiod run?
+# any string but "yes" will equivalent to "NO"
+#
+RUN_RFIOD="<%= @active %>"
+#
+# should we run with another limit on the number of file descriptors than the default?
+# any string will be passed to ulimit -n
+#ULIMIT_N=<%= @ulimitn %>
+#
+###############################################################################################
+# Change and uncomment the variables below if your setup is different than the one by default #
+###############################################################################################
+
+######################
+# DPM RFIO variables #
+######################
+
+# Nameserver and dpm hosts
+export DPNS_HOST=lxfsra04a04.cern.ch
+export DPM_HOST=lxfsra04a04.cern.ch
+
+# - RFIO log file :
+RFIOLOGFILE=/var/log/rfio/log
+
+###################
+# RFIO Port Range #
+###################
+
+# - RFIO port range :
+RFIO_PORT_RANGE="<%= @portrange %>"
+
+###################
+# Globus variable #
+###################
+
+# - gridmapdir location
+#GRIDMAPDIR=/etc/grid-security/gridmapdir
+
+#########################
+# RFIOD Startup Options #
+#########################
+
+OPTIONS="<%= @startoptions %>"
+
