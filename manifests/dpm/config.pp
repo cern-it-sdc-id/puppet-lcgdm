@@ -18,23 +18,23 @@ class lcgdm::dpm::config (
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 
   file {
-    "$configfile": # "/usr/etc/DPMCONFIG"
+    "${configfile}": # "/usr/etc/DPMCONFIG"
       ensure  => present,
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,
-      mode    => 600,
+      mode    => '0600',
       content => template("lcgdm/dpm/config.erb"),
       require => User[$lcgdm::base::config::user];
     "/etc/sysconfig/dpm":
       owner   => root,
       group   => root,
-      mode    => 644,
+      mode    => '0644',
       content => template("lcgdm/dpm/sysconfig.erb");
   }
 
-  lcgdm::shift::value {"DPM REQCLEAN":
-    component => "DPM",
-    type      => "REQCLEAN",
+  lcgdm::shift::value {'DPM REQCLEAN':
+    component => 'DPM',
+    type      => 'REQCLEAN',
     value     => "${reqcleantimeout}"
   }
 

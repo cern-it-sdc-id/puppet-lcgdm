@@ -15,14 +15,14 @@ class lcgdm::ns (
   #
   # Base configuration
   #
-  if !defined(Class["Lcgdm::Base"]) {
-    class{"lcgdm::base":
+  if !defined(Class['Lcgdm::Base']) {
+    class{'lcgdm::base':
       uid => $uid,
       gid => $gid,
     }
   }
 
-  class{"lcgdm::ns::config":
+  class{'lcgdm::ns::config':
     flavor   => "${flavor}",
     dbflavor => "${dbflavor}",
     dbuser   => "${dbuser}",
@@ -31,9 +31,9 @@ class lcgdm::ns (
     dbmanage => $dbmanage,
     coredump => "${coredump}",
   }
-  class{"lcgdm::ns::install":}
-  class{"lcgdm::ns::service":}
-  class{"lcgdm::ns::client":
+  class{'lcgdm::ns::install':}
+  class{'lcgdm::ns::service':}
+  class{'lcgdm::ns::client':
     flavor => "${flavor}"
   }
 }

@@ -1,8 +1,8 @@
 class lcgdm::dli::params (
 ) inherits lcgdm::base::params {
 
-  $active   = "yes"
+  $active	= 'yes'
   $ulimitn	= 4096
-  $lfchost  = $fqdn
+  $lfchost	= $fqdn
   
 }

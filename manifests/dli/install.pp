@@ -3,7 +3,7 @@ class lcgdm::dli::install (
 
     Class[Lcgdm::Dli::Config] -> Class[Lcgdm::Dli::Install]
 
-    package { "lfc-dli": 
-            ensure => present;
+    package {'lfc-dli': 
+            ensure 	=> present;
     }
 }

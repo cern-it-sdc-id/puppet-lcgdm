@@ -3,16 +3,16 @@ class lcgdm::dpm::params (
 
   $host             = $fqdn
   $nshost           = $host
-  $dbflavor         = "mysql"
-  $dbhost           = "localhost"
+  $dbflavor         = 'mysql'
+  $dbhost           = 'localhost'
   $dbmanage         = true
-  $active           = "yes"
+  $active           = 'yes'
   $ulimitn          = 4096
-  $coredump         = "no"
+  $coredump         = 'no'
   $numfthreads      = 60
   $numsthreads      = 20
-  $syncget          = "yes"
-  $configfile       = "/usr/etc/DPMCONFIG"
-  $reqcleantimeout  = "3m"
+  $syncget          = 'yes'
+  $configfile       = '/usr/etc/DPMCONFIG'
+  $reqcleantimeout  = '3m'
 
 }

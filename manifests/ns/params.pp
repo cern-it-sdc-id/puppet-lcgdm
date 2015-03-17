@@ -1,18 +1,16 @@
 class lcgdm::ns::params (
 ) inherits lcgdm::base::params {
-
-  $flavor           = "dpns"
+  $flavor           = 'dpns'
   $host             = $fqdn
-  $dbflavor         = "mysql"
-  $dbhost           = "localhost"
+  $dbflavor         = 'mysql'
+  $dbhost           = 'localhost'
   $dbmanage         = true
-  $active           = "yes"
-  $readonly         = "no"
-  $disableautovids  = "no"
+  $active           = 'yes'
+  $readonly         = 'no'
+  $disableautovids  = 'no'
   $ulimitn          = 4096
-  $coredump         = "no"
+  $coredump         = 'no'
   $numthreads       = 80
-  $configfile       = "/usr/etc/NSCONFIG"
-  $logpermissions   = 0644
-
+  $configfile       = '/usr/etc/NSCONFIG'
+  $logpermissions   = '0644'
 }

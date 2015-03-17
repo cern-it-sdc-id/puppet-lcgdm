@@ -1,12 +1,12 @@
 class lcgdm::dpm (
-  $dbflavor        = $lcgdm::dpm::params::dbflavor,
+  $dbflavor	= $lcgdm::dpm::params::dbflavor,
   $dbuser,
   $dbpass,
-  $dbhost          = $lcgdm::dpm::params::dbhost,
-  $dbmanage        = $lcgdm::dpm::params::dbmanage,
-  $coredump        = $lcgdm::ns::params::coredump
+  $dbhost       = $lcgdm::dpm::params::dbhost,
+  $dbmanage	= $lcgdm::dpm::params::dbmanage,
+  $coredump	= $lcgdm::ns::params::coredump
 ) inherits lcgdm::dpm::params {
-  class{"lcgdm::dpm::config":
+  class{'lcgdm::dpm::config':
     dbflavor => "${dbflavor}",
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
@@ -14,6 +14,6 @@ class lcgdm::dpm (
     dbmanage => $dbmanage,
     coredump => "${coredump}",
   }
-  class{"lcgdm::dpm::install":}
-  class{"lcgdm::dpm::service":}
+  class{'lcgdm::dpm::install':}
+  class{'lcgdm::dpm::service':}
 }

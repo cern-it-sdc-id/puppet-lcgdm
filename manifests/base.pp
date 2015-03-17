@@ -5,12 +5,12 @@ class lcgdm::base (
   $certkey      = $lcgdm::base::params::certkey,
   $user         = $lcgdm::base::params::user,
 ) inherits lcgdm::dpm::params {
-  class{"lcgdm::base::config":
-    uid => $uid,
-    gid => $gid,
-    cert => $cert,
-    certkey => $certkey,
-    user => $user,
+  class{'lcgdm::base::config':
+    uid 	=> $uid,
+    gid 	=> $gid,
+    cert 	=> $cert,
+    certkey 	=> $certkey,
+    user 	=> $user,
   }
-  class{"lcgdm::base::install":}
+  class{'lcgdm::base::install':}
 }

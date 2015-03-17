@@ -3,21 +3,21 @@ class lcgdm::rfio::install (
 
     Class[Lcgdm::Rfio::Config] -> Class[Lcgdm::Rfio::Install]
 
-    package { "dpm-rfio-server": 
-            ensure => present;
+    package {'dpm-rfio-server': 
+      ensure => present;
     }
 
     file {
-      "/var/log/rfio":
+      '/var/log/rfio':
         ensure  => directory,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 755;
-      "/var/log/rfio/log":
+        mode    => '0755';
+      '/var/log/rfio/log':
         ensure  => present,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 644,
-        require => File["/var/log/rfio"];
+        mode    => '0644',
+        require => File['/var/log/rfio'];
     }
 }

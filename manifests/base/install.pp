@@ -4,7 +4,7 @@ class lcgdm::base::install (
     Class[Lcgdm::Base::Config] -> Class[Lcgdm::Base::Install]
 
     package {
-        "lcgdm-libs":
+        'lcgdm-libs':
             ensure => present;
     }
 

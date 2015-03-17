@@ -8,23 +8,23 @@ class lcgdm::ns::install (
     }
 
     file {
-      "/var/log/$lcgdm::ns::config::flavor":
+      "/var/log/${lcgdm::ns::config::flavor}":
         ensure  => directory,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
         mode    => $lcgdm::ns::config::logpermissions;
-      "/var/log/$lcgdm::ns::config::flavor/log":
+      "/var/log/${lcgdm::ns::config::flavor}/log":
         ensure  => present,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
         mode    => $lcgdm::ns::config::logpermissions,
-        require => File["/var/log/$lcgdm::ns::config::flavor"];
+        require => File["/var/log/${lcgdm::ns::config::flavor}"];
     }
 
     validate_bool($lcgdm::ns::config::dbmanage)
-    if $lcgdm::ns::config::dbmanage and $lcgdm::ns::config::dbflavor == "mysql" {
+    if $lcgdm::ns::config::dbmanage and $lcgdm::ns::config::dbflavor == 'mysql' {
       Class[Lcgdm::Ns::Mysql] -> Class[Lcgdm::Ns::Service]
-      class{"lcgdm::ns::mysql":
+      class{'lcgdm::ns::mysql':
         flavor  => $lcgdm::ns::config::flavor,
         dbuser  => $lcgdm::ns::config::dbuser,
         dbpass  => $lcgdm::ns::config::dbpass,

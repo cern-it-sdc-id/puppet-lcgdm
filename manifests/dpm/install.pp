@@ -3,7 +3,7 @@ class lcgdm::dpm::install (
 
     Class[Lcgdm::Dpm::Config] -> Class[Lcgdm::Dpm::Install]
 
-    package { "dpm-server-${lcgdm::dpm::config::dbflavor}": 
+    package {"dpm-server-${lcgdm::dpm::config::dbflavor}": 
             ensure => present;
     }
 
@@ -12,19 +12,19 @@ class lcgdm::dpm::install (
         ensure  => directory,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 755;
+        mode    => '0755';
       "/var/log/dpm/log":
         ensure  => present,
         owner   => $lcgdm::base::config::user,
         group   => $lcgdm::base::config::user,
-        mode    => 644,
-        require => File["/var/log/dpm"];
+        mode    => '0644',
+        require => File['/var/log/dpm'];
     }
 
     validate_bool($lcgdm::dpm::config::dbmanage)
-    if $lcgdm::dpm::config::dbmanage and $lcgdm::dpm::config::dbflavor == "mysql" {
+    if $lcgdm::dpm::config::dbmanage and $lcgdm::dpm::config::dbflavor == 'mysql' {
       Class[Lcgdm::Dpm::Mysql] -> Class[Lcgdm::Dpm::Service]
-      class{"lcgdm::dpm::mysql":
+      class{'lcgdm::dpm::mysql':
         dbuser  => $lcgdm::dpm::config::dbuser,
         dbpass  => $lcgdm::dpm::config::dbpass,
         dbhost  => $lcgdm::dpm::config::dbhost,

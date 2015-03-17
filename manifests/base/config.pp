@@ -10,16 +10,16 @@ class lcgdm::base::config (
   include('fetchcrl')
 
   group { $user:
-      ensure => present,
-      gid    => $gid,
+      ensure 	=> present,
+      gid   	=> $gid,
   }
 
   user { $user:
-      ensure     => present,
-      uid        => $uid,
-      gid        => $gid,
+      ensure	=> present,
+      uid	=> $uid,
+      gid       => $gid,
       managehome => true,
-      require    => Group[$user],
+      require   => Group[$user],
   }
 
   # define only if it doesn't exist,
@@ -30,54 +30,54 @@ class lcgdm::base::config (
         ensure  => directory,
         owner   => root,
         group   => root,
-        mode    => 0755,
-        seluser => "system_u",
-        selrole => "object_r",
-        seltype => "etc_t",
+        mode    => '0755',
+        seluser => 'system_u',
+        selrole => 'object_r',
+        seltype => 'etc_t',
     }
   }
 
   file {
-    "/etc/grid-security/$user":
+    '/etc/grid-security/${user}':
       ensure   => directory,
       owner    => $user,
       group    => $user,
-      mode     => 755,
-      seluser  => "system_u",
-      selrole  => "object_r",
-      seltype  => "etc_t",
+      mode     => '0755',
+      seluser  => 'system_u',
+      selrole  => 'object_r',
+      seltype  => 'etc_t',
       require => User[$user];
-    "/etc/grid-security/$user/$cert":
+    '/etc/grid-security/${user}/${cert}':
       owner   => $user,
       group   => $user,
-      mode    => 444,
-      seluser => "system_u",
-      selrole => "object_r",
-      seltype => "etc_t",
+      mode    => '0444',
+      seluser => 'system_u',
+      selrole => 'object_r',
+      seltype => 'etc_t',
       source  => "/etc/grid-security/hostcert.pem",
       require => User[$user];
-    "/etc/grid-security/$user/$certkey":
+    "/etc/grid-security/${user}/${certkey}":
       owner   => $user,
       group   => $user,
-      mode    => 400,
-      seluser => "system_u",
-      selrole => "object_r",
-      seltype => "etc_t",
-      source  => "/etc/grid-security/hostkey.pem",
+      mode    => '0400',
+      seluser => 'system_u',
+      selrole => 'object_r',
+      seltype => 'etc_t',
+      source  => '/etc/grid-security/hostkey.pem',
       require => User[$user];
     "/usr/share/augeas/lenses/dist/shift.aug":
       ensure  => present,
       owner   => root,
       group   => root,
-      mode    => 744,
-      seluser => "system_u",
-      selrole => "object_r",
-      seltype => "etc_t",
-      content => template("lcgdm/shift.aug");
+      mode    => '0744',
+      seluser => 'system_u',
+      selrole => 'object_r',
+      seltype => 'etc_t',
+      content => template('lcgdm/shift.aug');
   }
 
   augeas {"unlimit_${user}_nproc":
-    context => "/files/etc/security/limits.d/90-nproc.conf",
+    context => '/files/etc/security/limits.d/90-nproc.conf',
     changes => [
       "set domain[. = '${user}'] ${user}",
       "set domain[. = '${user}']/type soft",

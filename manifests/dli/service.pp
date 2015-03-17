@@ -3,12 +3,12 @@ class lcgdm::dli::service (
 
    Class[Lcgdm::Dli::Install] -> Class[Lcgdm::Dli::Service]
 
-   service { "lfc-dli":
-     enable     => true,
-     ensure     => running,
+   service {'lfc-dli':
+     enable	=> true,
+     ensure	=> running,
      hasrestart => true,
      hasstatus  => true,
-     subscribe  => File["/etc/sysconfig/lfc-dli"],
+     subscribe  => File['/etc/sysconfig/lfc-dli'],
    }
 }
 

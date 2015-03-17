@@ -23,10 +23,10 @@
 #   }
 #
 define lcgdm::mkgridmap::file (
-  $configfile   = "/etc/edg-mkgridmap.conf",
-  $mapfile      = "/etc/grid-security/grid-mapfile",
-  $localmapfile = "/etc/grid-mapfile-local",
-  $logfile      = "/var/log/edg-mkgridmap.log",
+  $configfile   = '/etc/edg-mkgridmap.config',
+  $mapfile      = '/etc/grid-security/grid-mapfile',
+  $localmapfile = '/etc/grid-mapfile-local',
+  $logfile      = '/var/log/edg-mkgridmap.log',
   $groupmap     = undef,
   $localmap     = undef
 ) {
@@ -35,8 +35,8 @@ define lcgdm::mkgridmap::file (
   Class[Lcgdm::Mkgridmap::Install] -> Lcgdm::Mkgridmap::File<| |>
 
   cron {"${configfile}-cron":
-    command => "(date; /usr/libexec/edg-mkgridmap/edg-mkgridmap.pl --conf=$configfile --output=$mapfile --safe) >> $logfile 2>&1",
-    environment => "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
+    command 	=> "(date; /usr/libexec/edg-mkgridmap/edg-mkgridmap.pl --conf=${configfile} --output=${mapfile} --safe) >> ${logfile} 2>&1",
+    environment => 'PATH=/sbin:/bin:/usr/sbin:/usr/bin',
     user        => root,
     hour        => [5,11,18,23],
     minute      => 55,
@@ -45,27 +45,27 @@ define lcgdm::mkgridmap::file (
 
   file {
     $configfile:
-      ensure => present,
-      owner  => root,
-      group  => root,
-      mode   => 644,
-      content => inline_template("
+      ensure 	=> present,
+      owner  	=> root,
+      group  	=> root,
+      mode   	=> '0644',
+      content 	=> inline_template("
 <% if @groupmap -%>
 <% @groupmap.sort.each do |uri, vo| %>\ngroup <%= uri %> <%= vo %><% end %>
 <% end -%>
 gmf_local <%= @localmapfile %>
       ");
     $mapfile:
-      ensure => present,
-      owner  => root,
-      group  => root,
-      mode   => 644;
-    "$localmapfile":
-      ensure => present,
-      owner  => root,
-      group  => root,
-      mode   => 644,
-      content => inline_template("\
+      ensure 	=> present,
+      owner  	=> root,
+      group  	=> root,
+      mode   	=> '0644';
+    "${localmapfile}":
+      ensure 	=> present,
+      owner  	=> root,
+      group  	=> root,
+      mode   	=> '0644',
+      content 	=> inline_template("\
 <% if @localmap -%>\
 <% @localmap.sort.each do |key, value| %>\"<%= key %>\" <%= value %>\n<% end %>
 <% end -%>")

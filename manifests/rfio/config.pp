@@ -13,21 +13,21 @@ class lcgdm::rfio::config (
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Rfio::Config]
 
   file {
-    "/etc/sysconfig/rfiod":
+    '/etc/sysconfig/rfiod':
       owner  => root,
       group  => root,
-      mode   => 644,
+      mode   => '0644',
       content => template("lcgdm/rfio/sysconfig.erb");
   }
 
   lcgdm::shift::value{
-    "RFIO RDMT BUFSIZE":
-      component => "RFIO",
-      type      => "DAEMONV3_RDMT_BUFSIZE",
+    'RFIO RDMT BUFSIZE':
+      component => 'RFIO',
+      type      => 'DAEMONV3_RDMT_BUFSIZE',
       value     => 524288;
-    "RFIO BUFSIZE":
-      component => "RFIO",
-      type      => "DAEMONV3_RDSIZE",
+    'RFIO BUFSIZE':
+      component => 'RFIO',
+      type      => 'DAEMONV3_RDSIZE',
       value     => 524288
   }
 
