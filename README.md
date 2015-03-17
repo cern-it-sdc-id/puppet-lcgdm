@@ -4,7 +4,7 @@ This is the puppet-lcgdm module, it configures the DPM/LFC legacy components dev
 
 ###CI builds
 
-[![Build Status](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm.svg?branch=master)]([https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm.svg)
+[![Build Status](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm.svg?branch=master)]([https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm)
 
 ### License
 ASL 2.0
