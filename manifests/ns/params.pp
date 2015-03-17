@@ -11,7 +11,7 @@ class lcgdm::ns::params (
   $disableautovids  = "no"
   $ulimitn          = 4096
   $coredump         = "no"
-  $numthreads       = 40
+  $numthreads       = 80
   $configfile       = "/usr/etc/NSCONFIG"
   $logpermissions   = 0644
 
