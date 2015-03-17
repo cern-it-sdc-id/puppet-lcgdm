@@ -1,4 +1,3 @@
 class lcgdm::mkgridmap::install {
-
-  package {'edg-mkgridmap': ensure => present }
+  package { 'edg-mkgridmap': ensure => present }
 }

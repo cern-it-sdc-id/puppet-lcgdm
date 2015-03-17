@@ -9,8 +9,7 @@ class lcgdm (
   $coredump = 'no',
   $dbmanage = true,
   $uid      = undef,
-  $gid      = undef,
-) {
+  $gid      = undef,) {
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Dpm::Service]
   Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Ns::Client]
   Class[Lcgdm::Dpm::Service] -> Lcgdm::Ns::Domain <| |>
@@ -22,17 +21,17 @@ class lcgdm (
   # Base configuration
   #
   if !defined(Class['Lcgdm::Base']) {
-    if gid != undef { 
-      class{'lcgdm::base':
+    if gid != undef {
+      class { 'lcgdm::base':
         uid => $uid,
         gid => $gid,
       }
-  } else {
-      class{'lcgdm::base':
+    } else {
+      class { 'lcgdm::base':
         uid => $uid,
         gid => $uid,
       }
-  }
+    }
 
   }
 
@@ -40,7 +39,7 @@ class lcgdm (
   # Nameserver client and server configuration.
   #
   if gid != undef {
-    class{'lcgdm::ns':
+    class { 'lcgdm::ns':
       flavor   => "${flavor}",
       dbflavor => "${dbflavor}",
       dbuser   => "${dbuser}",
@@ -52,7 +51,7 @@ class lcgdm (
       gid      => $gid,
     }
   } else {
-    class{'lcgdm::ns':
+    class { 'lcgdm::ns':
       flavor   => "${flavor}",
       dbflavor => "${dbflavor}",
       dbuser   => "${dbuser}",
@@ -64,10 +63,11 @@ class lcgdm (
       gid      => $uid,
     }
   }
+
   #
   # DPM daemon configuration.
   #
-  class{'lcgdm::dpm':
+  class { 'lcgdm::dpm':
     dbflavor => "${dbflavor}",
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
@@ -81,8 +81,7 @@ class lcgdm (
   #
   validate_array($volist)
 
-  lcgdm::ns::domain{"${domain}":}
-  lcgdm::ns::vo{$volist:
-    domain => "${domain}",
-  }
+  lcgdm::ns::domain { "${domain}": }
+
+  lcgdm::ns::vo { $volist: domain => "${domain}", }
 }

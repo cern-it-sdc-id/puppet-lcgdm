@@ -13,8 +13,7 @@ class lcgdm::dpm::config (
   $numfthreads     = $lcgdm::dpm::params::numfthreads,
   $numsthreads     = $lcgdm::dpm::params::numsthreads,
   $configfile      = $lcgdm::dpm::params::configfile,
-  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout
-) inherits lcgdm::dpm::params {
+  $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout) inherits lcgdm::dpm::params {
   Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
 
   file {
@@ -25,6 +24,7 @@ class lcgdm::dpm::config (
       mode    => '0600',
       content => template("lcgdm/dpm/config.erb"),
       require => User[$lcgdm::base::config::user];
+
     "/etc/sysconfig/dpm":
       owner   => root,
       group   => root,
@@ -32,7 +32,7 @@ class lcgdm::dpm::config (
       content => template("lcgdm/dpm/sysconfig.erb");
   }
 
-  lcgdm::shift::value {'DPM REQCLEAN':
+  lcgdm::shift::value { 'DPM REQCLEAN':
     component => 'DPM',
     type      => 'REQCLEAN',
     value     => "${reqcleantimeout}"
