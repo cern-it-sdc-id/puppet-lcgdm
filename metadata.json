@@ -1,0 +1,23 @@
+{
+  "author": "LCGDM",
+  "dependencies": [
+    {
+      "name": "CERNOps/fetchcrl",
+      "version_requirement": "\u003e\u003d 0.1.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "\u003e\u003d 2.0.0"
+    }
+  ],
+  "description": "This package provides modules for managing lcgdm components",
+  "license": "Apache License, Version 2.0",
+  "name": "lcgdm-lcgdm",
+  "operatingsystem_support": [],
+  "project_page": "https://svnweb.cern.ch/trac/lcgdm",
+  "requirements": [],
+  "source": "UNKNOWN",
+  "summary": "Package for managing lcgdm components",
+  "tags": [],
+  "version": "0.2.5"
+}
