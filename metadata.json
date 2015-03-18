@@ -16,7 +16,7 @@
   "operatingsystem_support": [],
   "project_page": "https://svnweb.cern.ch/trac/lcgdm",
   "requirements": [],
-  "source": "UNKNOWN",
+  "source": "https://github.com/cern-it-sdc-id/puppet-lcgdm",
   "summary": "Package for managing lcgdm components",
   "tags": [],
   "version": "0.2.5"
