@@ -1,6 +1,6 @@
 class lcgdm::dpm::params () inherits lcgdm::base::params {
-  $host = $fqdn
-  $nshost = $host
+  $host = "${::fqdn}"
+  $nshost = "${::fqdn}"
   $dbflavor = 'mysql'
   $dbhost = 'localhost'
   $dbmanage = true

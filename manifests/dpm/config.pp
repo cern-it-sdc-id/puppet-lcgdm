@@ -22,14 +22,14 @@ class lcgdm::dpm::config (
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,
       mode    => '0600',
-      content => template("lcgdm/dpm/config.erb"),
+      content => template('lcgdm/dpm/config.erb'),
       require => User[$lcgdm::base::config::user];
 
-    "/etc/sysconfig/dpm":
+    '/etc/sysconfig/dpm':
       owner   => root,
       group   => root,
       mode    => '0644',
-      content => template("lcgdm/dpm/sysconfig.erb");
+      content => template('lcgdm/dpm/sysconfig.erb');
   }
 
   lcgdm::shift::value { 'DPM REQCLEAN':

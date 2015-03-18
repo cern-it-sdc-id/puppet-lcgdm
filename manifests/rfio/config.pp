@@ -14,7 +14,7 @@ class lcgdm::rfio::config (
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template("lcgdm/rfio/sysconfig.erb");
+    content => template('lcgdm/rfio/sysconfig.erb');
   }
 
   lcgdm::shift::value {

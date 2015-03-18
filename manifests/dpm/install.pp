@@ -4,13 +4,13 @@ class lcgdm::dpm::install () inherits lcgdm::dpm::params {
   package { "dpm-server-${lcgdm::dpm::config::dbflavor}": ensure => present; }
 
   file {
-    "/var/log/dpm":
+    '/var/log/dpm':
       ensure => directory,
       owner  => $lcgdm::base::config::user,
       group  => $lcgdm::base::config::user,
       mode   => '0755';
 
-    "/var/log/dpm/log":
+    '/var/log/dpm/log':
       ensure  => present,
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,

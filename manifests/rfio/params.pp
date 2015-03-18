@@ -5,7 +5,7 @@ class lcgdm::rfio::params () inherits lcgdm::base::params {
   $numthreads = 20
   $portrange = '20000 25000'
   $startoptions = '-sl'
-  $nshost = $fqdn
+  $nshost = "${::fqdn}"
   $dpmhost = $nshost
 
 }

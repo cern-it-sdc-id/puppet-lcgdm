@@ -2,8 +2,8 @@ class lcgdm::rfio::service () inherits lcgdm::rfio::params {
   Class[Lcgdm::Rfio::Install] -> Class[Lcgdm::Rfio::Service]
 
   service { 'rfiod':
-    enable     => true,
     ensure     => running,
+    enable     => true,
     hasrestart => true,
     hasstatus  => true,
     name       => 'rfiod',

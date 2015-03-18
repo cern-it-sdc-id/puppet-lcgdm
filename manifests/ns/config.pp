@@ -38,22 +38,29 @@ class lcgdm::ns::config (
       $pkg = "lfc-server-${dbflavor}"
       $clientpkg = 'lfc'
     }
+    default: {
+      $daemon = 'dpnsdaemon'
+      $envvar = 'DPNS'
+      $basepath = 'dpm'
+      $pkg = "dpm-name-server-${dbflavor}"
+      $clientpkg = 'dpm'
+    } 
   }
 
   file {
-    "$configfile":
+    "${configfile}":
       ensure  => present,
       owner   => $lcgdm::base::config::user,
       group   => $lcgdm::base::config::user,
       mode    => '0600',
-      content => template("lcgdm/ns/config.erb"),
+      content => template('lcgdm/ns/config.erb'),
       require => User[$lcgdm::base::config::user];
 
     "/etc/sysconfig/${daemon}":
       owner   => root,
       group   => root,
       mode    => '0644',
-      content => template("lcgdm/ns/sysconfig.erb");
+      content => template('lcgdm/ns/sysconfig.erb');
   }
 
 }

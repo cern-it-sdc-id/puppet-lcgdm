@@ -33,9 +33,8 @@ class lcgdm::base::config (
       seltype => 'etc_t',
     }
   }
-
   file {
-    '/etc/grid-security/${user}':
+    "/etc/grid-security/${user}":
       ensure  => directory,
       owner   => $user,
       group   => $user,
@@ -45,14 +44,14 @@ class lcgdm::base::config (
       seltype => 'etc_t',
       require => User[$user];
 
-    '/etc/grid-security/${user}/${cert}':
+    "/etc/grid-security/${user}/${cert}":
       owner   => $user,
       group   => $user,
       mode    => '0444',
       seluser => 'system_u',
       selrole => 'object_r',
       seltype => 'etc_t',
-      source  => "/etc/grid-security/hostcert.pem",
+      source  => '/etc/grid-security/hostcert.pem',
       require => User[$user];
 
     "/etc/grid-security/${user}/${certkey}":
@@ -65,7 +64,7 @@ class lcgdm::base::config (
       source  => '/etc/grid-security/hostkey.pem',
       require => User[$user];
 
-    "/usr/share/augeas/lenses/dist/shift.aug":
+    '/usr/share/augeas/lenses/dist/shift.aug':
       ensure  => present,
       owner   => root,
       group   => root,

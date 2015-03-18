@@ -14,7 +14,7 @@ define lcgdm::dpm::filesystem ($pool, $fs, $ensure = present, $dpmhost = $lcgdm:
   } else {
     $cmd = 'dpm-rmfs'
     $grep = '! grep -q'
-    $pool_option = "" # dpm-rmfs does not need/accept --poolname
+    $pool_option = '' # dpm-rmfs does not need/accept --poolname
   }
 
   exec { "${pool}/${server}:${fs}":
