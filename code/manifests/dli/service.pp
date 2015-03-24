@@ -1,14 +1,12 @@
-class lcgdm::dli::service (
-) inherits lcgdm::dli::params {
+class lcgdm::dli::service () inherits lcgdm::dli::params {
+  Class[Lcgdm::Dli::Install] -> Class[Lcgdm::Dli::Service]
 
-   Class[Lcgdm::Dli::Install] -> Class[Lcgdm::Dli::Service]
-
-   service { "lfc-dli":
-     enable     => true,
-     ensure     => running,
-     hasrestart => true,
-     hasstatus  => true,
-     subscribe  => File["/etc/sysconfig/lfc-dli"],
-   }
+  service { 'lfc-dli':
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+    subscribe  => File['/etc/sysconfig/lfc-dli'],
+  }
 }
 

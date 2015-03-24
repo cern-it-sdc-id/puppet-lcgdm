@@ -1,14 +1,8 @@
-class lcgdm::bdii::dpm (
-  $sitename = undef,
-  $basedir  = "home",
-  $vos      = [],
-  $glue2    = true
-) {
-
-  file {"/var/lib/bdii/gip/provider/se-dpm":
-    owner => root,
-    group => root,
-    mode  => 755,
+class lcgdm::bdii::dpm ($sitename = undef, $basedir = 'home', $vos = [], $glue2 = true) {
+  file { '/var/lib/bdii/gip/provider/se-dpm':
+    owner   => root,
+    group   => root,
+    mode    => '0755',
     content => inline_template("
 export X509_USER_CERT=/var/lib/ldap/hostcert.pem
 export X509_USER_KEY=/var/lib/ldap/hostkey.pem
@@ -16,19 +10,19 @@ dpm-listspaces --gip --protocols --basedir <%= @basedir %> --site <%= @sitename 
     ")
   }
 
-  file {"/var/lib/bdii/gip/provider/service-srm2.2":
-    owner => root,
-    group => root,
-    mode  => 755,
+  file { '/var/lib/bdii/gip/provider/service-srm2.2':
+    owner   => root,
+    group   => root,
+    mode    => '0755',
     content => inline_template("
-glite-info-service /var/lib/bdii/gip/glite-info-service-srm2.2.conf <%= @sitename %> httpg://$::fqdn:8446/srm/managerv2
+glite-info-service /var/lib/bdii/gip/glite-info-service-srm2.2.conf <%= @sitename %> httpg://${::fqdn}:8446/srm/managerv2
     ")
   }
 
-  file {"/var/lib/bdii/gip/glite-info-service-srm2.2.conf":
-    owner => root,
-    group => root,
-    mode  => 755,
+  file { '/var/lib/bdii/gip/glite-info-service-srm2.2.conf':
+    owner   => root,
+    group   => root,
+    mode    => '0755',
     content => inline_template("
 init = glite-info-service-dpm init v2
 service_type = SRM
@@ -46,24 +40,26 @@ get_acbr = <% vos.sort.each do |vo| %> echo VO:<%= vo %>; <% end %>
   }
 
   # Required for dpm-listspaces
-  package{"dpm-python":}
+  package { 'dpm-python': }
+
   # Required for srm provider
-  package{"glite-info-provider-service":}
+  package { 'glite-info-provider-service': }
 
   # dpm-listspaces need hostcert and key to be able to
   # connect (it is running as the ldap user)
-  file{"/var/lib/ldap/hostcert.pem":
-       ensure => present,
-       source => "/etc/grid-security/hostcert.pem",
-       owner  => "ldap",
-       group  => "ldap"
+  file { '/var/lib/ldap/hostcert.pem':
+    ensure => present,
+    source => '/etc/grid-security/hostcert.pem',
+    owner  => 'ldap',
+    group  => 'ldap'
   }
-  file{"/var/lib/ldap/hostkey.pem":
-       ensure => present,
-       mode   => 0400,
-       source => "/etc/grid-security/hostkey.pem",
-       owner  => "ldap",
-       group  => "ldap"
+
+  file { '/var/lib/ldap/hostkey.pem':
+    ensure => present,
+    mode   => '0400',
+    source => '/etc/grid-security/hostkey.pem',
+    owner  => 'ldap',
+    group  => 'ldap'
   }
 }
 
