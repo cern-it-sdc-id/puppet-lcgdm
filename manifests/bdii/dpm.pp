@@ -12,6 +12,12 @@ export X509_USER_KEY=/var/lib/ldap/hostkey.pem
 dpm-listspaces --gip --protocols --basedir <%= @basedir %> --site <%= @sitename %><% if @glue2 %> --glue2<% end %> --use-dmlite-conf /etc/dmlite.conf
       ")
     }
+
+   @user { 'ldap':
+    groups      => ["${lcgdm::base::params::user}"],
+    membership => minimum,
+   }
+  
   }
   else {  
 
