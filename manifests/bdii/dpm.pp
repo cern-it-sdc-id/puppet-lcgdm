@@ -6,7 +6,7 @@ class lcgdm::bdii::dpm ($sitename = undef, $basedir = 'home', $vos = [], $glue2 
       group   => root,
       mode    => '0755',
       content => inline_template("
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/jvm/java/jre/lib/amd64/server/
+export LD_LIBRARY_PATH=/usr/lib/jvm/java/jre/lib/amd64/server/
 export X509_USER_CERT=/var/lib/ldap/hostcert.pem
 export X509_USER_KEY=/var/lib/ldap/hostkey.pem
 dpm-listspaces --gip --protocols --basedir <%= @basedir %> --site <%= @sitename %><% if @glue2 %> --glue2<% end %> --use-dmlite-conf /etc/dmlite.conf
