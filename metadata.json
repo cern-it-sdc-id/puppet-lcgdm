@@ -19,5 +19,5 @@
   "source": "https://github.com/cern-it-sdc-id/puppet-lcgdm",
   "summary": "Package for managing lcgdm components",
   "tags": [],
-  "version": "0.2.7"
+  "version": "0.2.8"
 }

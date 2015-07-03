@@ -16,21 +16,5 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
     host     => "${dbhost}",
     sql      => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql",
     require  => File_line["${flavor} mysql commentcreate"]
-    notify   => Class[Lcgdm::Ns::Service]
   }
-
-  if $dbhost != 'localhost' {
-        #create the database grants for the user
-        mysql_grant { "${dbuser}@${::fqdn}/'cns_db.*'":
-            ensure     => 'present',
-            options    => ['GRANT'],
-            privileges => ['ALL'],
-            provider   => 'mysql',
-            user       => "${dbuser}@${::fqdn}",
-            table      => 'cns_db.*',
-            require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
-            notify     => Class[Lcgdm::Ns::Service]
-        }
-  }
-
 }

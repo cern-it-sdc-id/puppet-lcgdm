@@ -6,7 +6,6 @@ class lcgdm (
   $flavor   = 'dpns',
   $dbflavor = 'mysql',
   $dbhost   = 'localhost',
-  $mysqlrootpass = "",
   $coredump = 'no',
   $dbmanage = true,
   $uid      = undef,
@@ -34,23 +33,6 @@ class lcgdm (
       }
     }
 
-  }
-
-  #
-  # In case the DB is not local we should configure the file /root/.my.cnf
-
-  if $dbhost != 'localhost' and $dbmanage and $dbflavor == 'mysql'{
-        #check if root pass is empty
-        if empty($mysqlrootpass ) {
-                fail("mysqlrootpass parameter  should  not be empty")
-        }
-        #create the /root/.my.cnf
-          file { '/root/.my.cnf':
-             ensure => present,
-             mode   => '0655',
-             content => template('lcgdm/mysql/my.cnf.erb'),
-             before => [ Class[Lcgdm::Ns::Install], Class[Lcgdm::Dpm::Install] ]
-          }
   }
 
   #

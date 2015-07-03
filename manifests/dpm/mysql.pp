@@ -16,4 +16,23 @@ class lcgdm::dpm::mysql ($dbuser, $dbpass, $dbhost) {
     sql      => '/usr/share/lcgdm/create_dpm_tables_mysql.sql',
     require  => File_line['dpm mysql commentcreate']
   }
+
+  if $dbhost != 'localhost' {
+        #create the DB user and the grants
+
+        mysql_user { "${dbuser}@${::fqdn}":
+            ensure        => present,
+            password_hash => mysql_password($dbpass),
+            provider      => 'mysql',
+        }
+        mysql_grant { "${dbuser}@${::fqdn}/'dpm_db.*'":
+            ensure     => 'present',
+            options    => ['GRANT'],
+            privileges => ['ALL'],
+            provider   => 'mysql',
+            user       => "${dbuser}@${::fqdn}",
+            table      => 'dpm_db.*',
+            require    => [Mysql_database['dpm_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
+        }
+  }
 }
