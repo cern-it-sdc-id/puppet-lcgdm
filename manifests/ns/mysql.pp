@@ -15,7 +15,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
     password => "${dbpass}",
     host     => "${dbhost}",
     sql      => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql",
-    require  => File_line["${flavor} mysql commentcreate"]
+    require  => File_line["${flavor} mysql commentcreate"],
     notify   => Class[Lcgdm::Ns::Service]
   }
 
