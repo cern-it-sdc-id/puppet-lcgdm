@@ -37,7 +37,7 @@ define lcgdm::mkgridmap::file (
     command     => "(date; /usr/libexec/edg-mkgridmap/edg-mkgridmap.pl --conf=${configfile} --output=${mapfile} --safe) >> ${logfile} 2>&1",
     environment => 'PATH=/sbin:/bin:/usr/sbin:/usr/bin',
     user        => root,
-    hour        => [5, 11, 18, 23],
+    hour        => [5, 11, 17, 23],
     minute      => 55,
     require     => File[$configfile]
   }
