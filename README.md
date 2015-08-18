@@ -1,10 +1,8 @@
 ## puppet-lcgdm module
+[![Puppet Forge](http://img.shields.io/puppetforge/v/lcgdm/lcgdm.svg)](https://forge.puppetlabs.com/lcgdm/lcgdm)
+[![Build Status](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm.svg?branch=master)](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm)
 
 This is the puppet-lcgdm module, it configures the DPM/LFC legacy components developed at CERN , IT-SDC-ID section
-
-###CI builds
-
-[![Build Status](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm.svg?branch=master)](https://travis-ci.org/cern-it-sdc-id/puppet-lcgdm)
 
 ### License
 ASL 2.0
