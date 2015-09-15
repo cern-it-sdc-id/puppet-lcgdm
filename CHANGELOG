@@ -1,3 +1,5 @@
+2015-09-15  Andrea Manzi  <andrea.manzi@cern.ch>
+    * added DB grants for disknodes
 2015-07-03  Andrea Manzi  <andrea.manzi@cern.ch>
     * fix management of external DB
 2015-03-23  Andrea Manzi  <andrea.manzi@cern.ch>
