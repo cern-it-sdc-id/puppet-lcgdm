@@ -1,4 +1,4 @@
-define lcgdm::dpm::grants($user, $pass) {
+define lcgdm::dpm::grants ($user, $pass) {
     mysql_user { "${user}@${name}":
       ensure        => present,
       password_hash => mysql_password($pass),
