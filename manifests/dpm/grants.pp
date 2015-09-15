@@ -1,4 +1,6 @@
 define lcgdm::dpm::grants ($user, $pass) {
+    Class[Mysql::Server] -> Lcgdm::Dpm::Grants <| |>
+	
     mysql_user { "${user}@${name}":
       ensure        => present,
       password_hash => mysql_password($pass),
