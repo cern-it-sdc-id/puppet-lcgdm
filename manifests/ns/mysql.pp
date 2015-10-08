@@ -1,6 +1,6 @@
 class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
   # management of a mysql db (maybe this could be improved)
-  include 'mysql'
+  include 'mysql:server'
 
   # the packaged db script explicitly creates the db, we don't want that
   file_line { "${flavor} mysql commentcreate":
