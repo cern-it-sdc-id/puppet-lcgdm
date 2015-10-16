@@ -9,4 +9,17 @@ class lcgdm::dpm::service () inherits lcgdm::dpm::params {
     name       => 'dpm',
     subscribe  => File["${configfile}"],
   }
+
+   #centOS7 changes
+ if $::operatingsystemmajrelease and ($::operatingsystemmajrelease + 0) >= 7 {
+
+   file{'/etc/systemd/system/multi-user.target.wants/dpm.service':
+     ensure => 'link',
+     target => '/usr/share/dpm-mysql/dpm.service',
+   }
+   file{'/etc/systemd/system/dpm.service':
+     ensure => link,
+     target => '/usr/share/dpm-mysql/dpm.service',
+   }
+ }
 }
