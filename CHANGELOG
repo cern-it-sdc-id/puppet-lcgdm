@@ -1,3 +1,6 @@
+2015-10-20 Andrea Manzi  <andrea.manzi@cern.ch>
+    * small modification needed for puppet 2.8.3
+    * enable SRM/DPM/DPNS on centoOS7
 2015-09-15  Andrea Manzi  <andrea.manzi@cern.ch>
     * added DB grants for disknodes
 2015-07-03  Andrea Manzi  <andrea.manzi@cern.ch>
