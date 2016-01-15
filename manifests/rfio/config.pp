@@ -8,7 +8,7 @@ class lcgdm::rfio::config (
   $dpmhost      = $lcgdm::rfio::params::dpmhost) inherits lcgdm::rfio::params {
   include('lcgdm::shift::config')
 
-  Class[Lcgdm::Base::Config] -> Class[Lcgdm::Rfio::Config]
+  Class[lcgdm::base::config] -> Class[lcgdm::rfio::config]
 
   file { '/etc/sysconfig/rfiod':
     owner   => root,

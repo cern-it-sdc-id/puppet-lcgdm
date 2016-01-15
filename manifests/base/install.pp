@@ -1,5 +1,5 @@
 class lcgdm::base::install () inherits lcgdm::base::params {
-  Class[Lcgdm::Base::Config] -> Class[Lcgdm::Base::Install]
+  Class[lcgdm::base::config] -> Class[lcgdm::base::install]
 
   package { 'lcgdm-libs': ensure => present; }
 

@@ -1,5 +1,5 @@
 class lcgdm::rfio::install () inherits lcgdm::rfio::params {
-  Class[Lcgdm::Rfio::Config] -> Class[Lcgdm::Rfio::Install]
+  Class[lcgdm::rfio::config] -> Class[lcgdm::rfio::install]
 
   package { 'dpm-rfio-server': ensure => present; }
 

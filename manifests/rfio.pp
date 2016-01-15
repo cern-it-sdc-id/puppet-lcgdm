@@ -1,5 +1,5 @@
 class lcgdm::rfio ($dpmhost = "${::fqdn}", $nshost = "${dpmhost}",) {
-  Class[Lcgdm::Base::Config] -> Class[Lcgdm::Rfio::Config]
+  Class[lcgdm::base::config] -> Class[lcgdm::rfio::config]
 
   class { 'lcgdm::rfio::config':
     dpmhost => "${dpmhost}",

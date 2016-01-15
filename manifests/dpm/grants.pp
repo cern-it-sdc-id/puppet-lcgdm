@@ -1,5 +1,5 @@
 define lcgdm::dpm::grants ($user, $pass) {
-    Class[Mysql::Server] -> Lcgdm::Dpm::Grants <| |>
+    Class[mysql::server] -> Lcgdm::Dpm::Grants <| |>
 	
     mysql_user { "${user}@${name}":
       ensure        => present,

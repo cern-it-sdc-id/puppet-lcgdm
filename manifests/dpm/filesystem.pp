@@ -1,5 +1,5 @@
 define lcgdm::dpm::filesystem ($pool, $fs, $ensure = present, $dpmhost = $lcgdm::ns::client::dpmhost, $server = $fqdn,) {
-  Class[Lcgdm::Ns::Client] -> Lcgdm::Dpm::Filesystem <| |>
+  Class[lcgdm::ns::client] -> Lcgdm::Dpm::Filesystem <| |>
 
   if $dpmhost == undef {
     $host = $lcgdm::dpm::config::host

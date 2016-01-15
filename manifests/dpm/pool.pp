@@ -1,5 +1,5 @@
 define lcgdm::dpm::pool ($def_filesize = '100M') {
-  Class[Lcgdm::Ns::Client] -> Lcgdm::Dpm::Pool <| |>
+  Class[lcgdm::ns::client] -> Lcgdm::Dpm::Pool <| |>
 
   exec { "lcgdm_dpm_pool-${name}":
     path        => '/bin:/sbin:/usr/bin:/usr/sbin',

@@ -1,5 +1,5 @@
 class lcgdm::dli::service () inherits lcgdm::dli::params {
-  Class[Lcgdm::Dli::Install] -> Class[Lcgdm::Dli::Service]
+  Class[lcgdm::dli::install] -> Class[lcgdm::dli::service]
 
   service { 'lfc-dli':
     ensure     => running,
