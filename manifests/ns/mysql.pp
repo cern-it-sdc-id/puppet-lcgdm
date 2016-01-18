@@ -16,7 +16,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
     host     => "${dbhost}",
     sql      => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql",
     require  => File_line["${flavor} mysql commentcreate"],
-    notify   => Class[Lcgdm::Ns::Service]
+    notify   => Class[lcgdm::ns::service]
   }
 
   if $dbhost != 'localhost' {
@@ -29,7 +29,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
             user       => "${dbuser}@${::fqdn}",
             table      => 'cns_db.*',
             require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
-            notify     => Class[Lcgdm::Ns::Service]
+            notify     => Class[lcgdm::ns::service]
         }
   }
 

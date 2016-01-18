@@ -11,9 +11,9 @@ class lcgdm (
   $dbmanage = true,
   $uid      = undef,
   $gid      = undef,) {
-  Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Dpm::Service]
-  Class[Lcgdm::Ns::Service] -> Class[Lcgdm::Ns::Client]
-  Class[Lcgdm::Dpm::Service] -> Lcgdm::Ns::Domain <| |>
+  Class[lcgdm::ns::service] -> Class[lcgdm::dpm::service]
+  Class[lcgdm::ns::service] -> Class[lcgdm::ns::client]
+  Class[lcgdm::dpm::service] -> Lcgdm::Ns::Domain <| |>
   Lcgdm::Ns::Domain <| |> -> Lcgdm::Ns::Vo <| |>
 
   validate_bool($dbmanage)
@@ -21,7 +21,7 @@ class lcgdm (
   #
   # Base configuration
   #
-  if !defined(Class['Lcgdm::Base']) {
+  if !defined(Class['lcgdm::base']) {
     if gid != undef {
       class { 'lcgdm::base':
         uid => $uid,
@@ -49,7 +49,7 @@ class lcgdm (
              ensure => present,
              mode   => '0655',
              content => template('lcgdm/mysql/my.cnf.erb'),
-             before => [ Class[Lcgdm::Ns::Install], Class[Lcgdm::Dpm::Install] ]
+             before => [ Class[lcgdm::ns::install], Class[lcgdm::dpm::install] ]
           }
   }
 

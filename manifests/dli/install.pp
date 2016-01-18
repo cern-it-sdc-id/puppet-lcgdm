@@ -1,5 +1,5 @@
 class lcgdm::dli::install () inherits lcgdm::dli::params {
-  Class[Lcgdm::Dli::Config] -> Class[Lcgdm::Dli::Install]
+  Class[lcgdm::dli::config] -> Class[lcgdm::dli::install]
 
   package { 'lfc-dli': ensure => present; }
 }

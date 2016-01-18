@@ -56,8 +56,8 @@ semantics_URL = http://sdm.lbl.gov/srm-wg/doc/SRM.v2.2.html
 get_starttime = perl -e '@st=stat(\"/var/run/dpm.pid\");print \"@st[10]\\n\";'
 get_data = echo
 get_services = echo
-get_owner = <% vos.sort.each do |vo| %> echo <%= vo %>; <% end %>
-get_acbr = <% vos.sort.each do |vo| %> echo VO:<%= vo %>; <% end %>
+get_owner = <% @vos.sort.each do |vo| %> echo <%= vo %>; <% end %>
+get_acbr = <% @vos.sort.each do |vo| %> echo VO:<%= vo %>; <% end %>
     ")
   }
 

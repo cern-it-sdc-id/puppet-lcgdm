@@ -1,5 +1,5 @@
 define lcgdm::ns::vo ($domain) {
-  Class[Lcgdm::Ns::Client] -> Lcgdm::Ns::Vo <| |>
+  Class[lcgdm::ns::client] -> Lcgdm::Ns::Vo <| |>
 
   Lcgdm::Ns::Domain[$domain] -> Lcgdm::Ns::Vo[$name]
 

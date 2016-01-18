@@ -1,5 +1,5 @@
 class lcgdm::dpm::service () inherits lcgdm::dpm::params {
-  Class[Lcgdm::Dpm::Install] -> Class[Lcgdm::Dpm::Service]
+  Class[lcgdm::dpm::install] -> Class[lcgdm::dpm::service]
 
   service { 'dpm':
     ensure     => running,

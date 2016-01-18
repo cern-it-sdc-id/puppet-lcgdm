@@ -14,7 +14,7 @@ class lcgdm::dpm::config (
   $numsthreads     = $lcgdm::dpm::params::numsthreads,
   $configfile      = $lcgdm::dpm::params::configfile,
   $reqcleantimeout = $lcgdm::dpm::params::reqcleantimeout) inherits lcgdm::dpm::params {
-  Class[Lcgdm::Base::Config] -> Class[Lcgdm::Dpm::Config]
+  Class[lcgdm::base::config] -> Class[lcgdm::dpm::config]
 
   file {
     "${configfile}": # "/usr/etc/DPMCONFIG"

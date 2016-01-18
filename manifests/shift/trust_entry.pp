@@ -1,6 +1,6 @@
 define lcgdm::shift::trust_entry ($component, $all = false, $type = 'TRUST') {
   if $all {
-    entry {
+    lcgdm::shift::entry {
       "entryt_$component":
         component => upcase($component),
         type      => 'TRUST';
@@ -22,7 +22,7 @@ define lcgdm::shift::trust_entry ($component, $all = false, $type = 'TRUST') {
         type      => 'FTRUST';
     }
   } else {
-    entry { "tentry_$component":
+    lcgdm::shift::entry { "tentry_$component":
       component => upcase($component),
       type      => upcase($type),
     }

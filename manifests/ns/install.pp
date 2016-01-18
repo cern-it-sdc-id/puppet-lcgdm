@@ -1,5 +1,5 @@
 class lcgdm::ns::install () inherits lcgdm::ns::params {
-  Class[Lcgdm::Ns::Config] -> Class[Lcgdm::Ns::Install]
+  Class[lcgdm::ns::config] -> Class[lcgdm::ns::install]
 
   package { $lcgdm::ns::config::pkg: ensure => present; }
 
@@ -21,7 +21,7 @@ class lcgdm::ns::install () inherits lcgdm::ns::params {
   validate_bool($lcgdm::ns::config::dbmanage)
 
   if $lcgdm::ns::config::dbmanage and $lcgdm::ns::config::dbflavor == 'mysql' {
-    Class[Lcgdm::Ns::Mysql] -> Class[Lcgdm::Ns::Service]
+    Class[lcgdm::ns::mysql] -> Class[lcgdm::ns::service]
 
     class { 'lcgdm::ns::mysql':
       flavor  => $lcgdm::ns::config::flavor,

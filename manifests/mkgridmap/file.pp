@@ -31,7 +31,7 @@ define lcgdm::mkgridmap::file (
   $localmap     = undef) {
   include('lcgdm::mkgridmap::install')
 
-  Class[Lcgdm::Mkgridmap::Install] -> Lcgdm::Mkgridmap::File <| |>
+  Class[lcgdm::mkgridmap::install] -> Lcgdm::Mkgridmap::File <| |>
 
   cron { "${configfile}-cron":
     command     => "(date; /usr/libexec/edg-mkgridmap/edg-mkgridmap.pl --conf=${configfile} --output=${mapfile} --safe) >> ${logfile} 2>&1",

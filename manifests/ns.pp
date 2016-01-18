@@ -13,7 +13,7 @@ class lcgdm::ns (
   #
   # Base configuration
   #
-  if !defined(Class['Lcgdm::Base']) {
+  if !defined(Class['lcgdm::base']) {
     class { 'lcgdm::base':
       uid => $uid,
       gid => $gid,
