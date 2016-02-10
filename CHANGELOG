@@ -1,3 +1,5 @@
+2016-01-18 Frederic Schaer  <frederic.schaer@cea.fr>
+    * Puppet 4 support
 2016-01-07 Andrea Manzi  <andrea.manzi@cern.ch>
     * added changes for BDII and HDFS
 2015-10-20 Andrea Manzi  <andrea.manzi@cern.ch>
