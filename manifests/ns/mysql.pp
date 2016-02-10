@@ -19,7 +19,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
     notify   => Class[lcgdm::ns::service]
   }
 
-  if $dbhost != 'localhost' {
+  if $dbhost != 'localhost'  and $dbhost != ${::fqdn} {
         #create the database grants for the user
         mysql_grant { "${dbuser}@${::fqdn}/'cns_db.*'":
             ensure     => 'present',
@@ -31,6 +31,27 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
             require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
             notify     => Class[lcgdm::ns::service]
         }
+  } else {
+	  mysql_grant { "${dbuser}@localhost/'cns_db.*'":
+            ensure     => 'present',
+            options    => ['GRANT'],
+            privileges => ['ALL'],
+            provider   => 'mysql',
+            user       => "${dbuser}@locahost",
+            table      => 'cns_db.*',
+            require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@locahost"], ],
+            notify     => Class[lcgdm::ns::service]
+
+	  mysql_grant { "${dbuser}@${::fqdn}/'cns_db.*'":
+            ensure     => 'present',
+            options    => ['GRANT'],
+            privileges => ['ALL'],
+            provider   => 'mysql',
+            user       => "${dbuser}@${::fqdn}",
+            table      => 'cns_db.*',
+            require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
+            notify     => Class[lcgdm::ns::service]
+		
   }
 
 }

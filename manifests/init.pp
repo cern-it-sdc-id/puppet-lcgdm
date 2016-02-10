@@ -39,7 +39,7 @@ class lcgdm (
   #
   # In case the DB is not local we should configure the file /root/.my.cnf
 
-  if $dbhost != 'localhost' and $dbmanage and $dbflavor == 'mysql'{
+  if $dbhost != 'localhost' and $dbhost != ${::fqdn} and $dbmanage and $dbflavor == 'mysql'{
         #check if root pass is empty
         if empty($mysqlrootpass ) {
                 fail("mysqlrootpass parameter  should  not be empty")
