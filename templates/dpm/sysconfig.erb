@@ -34,7 +34,8 @@ NB_STHREADS=<%= @numsthreads %>
 DPMCONFIGFILE="<%= @configfile %>"
 
 # - Use DPM synchronous get
-export DPM_USE_SYNCGET="<%= @syncget %>"
+DPM_USE_SYNCGET="<%= @syncget %>"
+export DPM_USE_SYNCGET
 
 <% if @dbflavor == "oracle" %>
 #############################
@@ -58,5 +59,6 @@ export LD_PRELOAD=/usr/lib64/libglobus_gssapi_gsi.so.4
 ########################
 
 # - make sure we use globus pthread model
-export GLOBUS_THREAD_MODEL="pthread"
+GLOBUS_THREAD_MODEL="pthread"
+export GLOBUS_THREAD_MODEL
 
