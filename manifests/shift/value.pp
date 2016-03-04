@@ -10,7 +10,7 @@ define lcgdm::shift::value ($component = $title, $type, $value) {
       "set name[last()]/value[0] '$value'",
       ],
     onlyif  => "match name[.='$component'][type='$type' and value='$value'] size == 0",
-    require => [File['/usr/share/augeas/lenses/dist/shift.aug'], File['/etc/shift.conf'],]
+    require => File['/etc/shift.conf'],
   }
 
 }
