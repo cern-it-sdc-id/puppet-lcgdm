@@ -1,13 +1,14 @@
 class lcgdm::rfio ($dpmhost = $::fqdn, $nshost = undef,) {
   Class[lcgdm::base::config] -> Class[lcgdm::rfio::config]
 
-  if ($nshost == undef){
-	$nshost = $dpmhost
+  $_nshost = $nshost {
+	undef	=> $dpmhost
+	default	=> $nshost
   }
 	
   class { 'lcgdm::rfio::config':
     dpmhost => $dpmhost,
-    nshost  => $nshost,
+    nshost  => $_nshost,
   }
 
   class { 'lcgdm::rfio::install':
