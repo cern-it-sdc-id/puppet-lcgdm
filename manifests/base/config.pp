@@ -75,14 +75,42 @@ class lcgdm::base::config (
       content => template('lcgdm/shift.aug');
   }
 
-  augeas { "unlimit_${user}_nproc":
+  augeas { "ulimit_dpm_nproc_soft":
     context => '/files/etc/security/limits.d/90-nproc.conf',
     changes => [
-      "set domain[. = '${user}'] ${user}",
-      "set domain[. = '${user}']/type soft",
-      "set domain[. = '${user}']/item nproc",
-      "set domain[. = '${user}']/value unlimited"]
+      "set domain[. = '*'] *",
+      "set domain[. = '*']/type soft",
+      "set domain[. = '*']/item nproc",
+      "set domain[. = '*']/value 65000"]
   }
+
+  augeas { "ulimit_dpm_nproc_hard":
+    context => '/files/etc/security/limits.d/90-nproc.conf',
+    changes => [
+      "set domain[. = '*'] *",
+      "set domain[. = '*']/type hard",
+      "set domain[. = '*']/item nproc",
+      "set domain[. = '*']/value 65000"]
+  }
+  
+  augeas { "ulimit_dpm_nofile_soft":
+    context => '/files/etc/security/limits.d/90-nproc.conf',
+    changes => [
+      "set domain[. = '*'] *",
+      "set domain[. = '*']/type soft",
+      "set domain[. = '*']/item nofile",
+      "set domain[. = '*']/value 65000"]
+  }
+
+  augeas { "ulimit_dpm_nofile_hard":
+    context => '/files/etc/security/limits.d/90-nproc.conf',
+    changes => [
+      "set domain[. = '*'] *",
+      "set domain[. = '*']/type hard",
+      "set domain[. = '*']/item nofile",
+      "set domain[. = '*']/value 65000"]
+  }
+
 
 }
 
