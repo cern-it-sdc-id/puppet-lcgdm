@@ -75,40 +75,12 @@ class lcgdm::base::config (
       content => template('lcgdm/shift.aug');
   }
 
-  augeas { "ulimit_dpm_nproc_soft":
-    context => '/files/etc/security/limits.d/90-nproc.conf',
-    changes => [
-      "set domain[. = '*'] *",
-      "set domain[. = '*']/type soft",
-      "set domain[. = '*']/item nproc",
-      "set domain[. = '*']/value 65000"]
-  }
+  lcgdm::limits { 
 
-  augeas { "ulimit_dpm_nproc_hard":
-    context => '/files/etc/security/limits.d/90-nproc.conf',
-    changes => [
-      "set domain[. = '*'] *",
-      "set domain[. = '*']/type hard",
-      "set domain[. = '*']/item nproc",
-      "set domain[. = '*']/value 65000"]
-  }
-  
-  augeas { "ulimit_dpm_nofile_soft":
-    context => '/files/etc/security/limits.d/90-nproc.conf',
-    changes => [
-      "set domain[. = '*'] *",
-      "set domain[. = '*']/type soft",
-      "set domain[. = '*']/item nofile",
-      "set domain[. = '*']/value 65000"]
-  }
+	 # maximum number of open files/sockets for root
+	 "*-soft": domain => *, type => soft, item => nofile, value =>  65000;
+	 "*-hard": domain => *, type => hard, item => nofile, value =>  65000;
 
-  augeas { "ulimit_dpm_nofile_hard":
-    context => '/files/etc/security/limits.d/90-nproc.conf',
-    changes => [
-      "set domain[. = '*'] *",
-      "set domain[. = '*']/type hard",
-      "set domain[. = '*']/item nofile",
-      "set domain[. = '*']/value 65000"]
   }
 
 
