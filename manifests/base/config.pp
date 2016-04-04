@@ -77,10 +77,10 @@ class lcgdm::base::config (
 
   lcgdm::limits { 
 
-	 # maximum number of open files/sockets for root
-	 "*-soft": domain => *, type => soft, item => nofile, value =>  65000;
-	 "*-hard": domain => *, type => hard, item => nofile, value =>  65000;
-
+	 "*-soft": domain => '*', type => 'soft', item => 'nofile', value =>  65000;
+	 "*-hard": domain => '*', type => 'hard', item => 'nofile', value =>  65000;
+	 "*-soft-nproc": domain => '*', type => 'soft', item => 'nproc', value =>  65000;
+	 "*-hard-proc": domain => '*', type => 'hard', item => 'nproc', value =>  65000;
   }
 
 
