@@ -5,6 +5,7 @@ class lcgdm::ns::config (
   $dbuser,
   $dbpass,
   $dbhost          = $lcgdm::ns::params::dbhost,
+  $ns_db           = $lcgdm::ns::params::ns_db,
   $dbmanage        = $lcgdm::ns::params::dbmanage,
   $active          = $lcgdm::ns::params::active,
   $readonly        = $lcgdm::ns::params::readonly,
