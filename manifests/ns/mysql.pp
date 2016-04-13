@@ -10,7 +10,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
     path   => "/usr/share/lcgdm/create_${flavor}_tables_mysql.sql"
   }
 
-  mysql::db { 'cns_db':
+  mysql::db { $lcgdm::ns::params::ns_db:
     user     => "${dbuser}",
     password => "${dbpass}",
     host     => "${dbhost}",
@@ -21,14 +21,14 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
 
   if $dbhost != 'localhost'  and $dbhost != "${::fqdn}" {
         #create the database grants for the user
-        mysql_grant { "${dbuser}@${::fqdn}/'cns_db.*'":
+        mysql_grant { "${dbuser}@${::fqdn}/${lcgdm::ns::params::ns_db}.*":
             ensure     => 'present',
             options    => ['GRANT'],
             privileges => ['ALL'],
             provider   => 'mysql',
             user       => "${dbuser}@${::fqdn}",
-            table      => 'cns_db.*',
-            require    => [Mysql_database['cns_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
+            table      => "${lcgdm::ns::params::ns_db}.*'",
+            require    => [Mysql_database["${lcgdm::ns::params::ns_db}"], Mysql_user["${dbuser}@${::fqdn}"], ],
             notify     => Class[lcgdm::ns::service]
         }
   }

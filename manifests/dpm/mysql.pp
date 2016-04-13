@@ -9,7 +9,7 @@ class lcgdm::dpm::mysql ($dbuser, $dbpass, $dbhost) {
     path   => '/usr/share/lcgdm/create_dpm_tables_mysql.sql'
   }
 
-  mysql::db { 'dpm_db':
+  mysql::db { $lcgdm::dpm::params::dpm_db:
     user     => "${dbuser}",
     password => "${dbpass}",
     host     => "${dbhost}",
@@ -25,14 +25,14 @@ class lcgdm::dpm::mysql ($dbuser, $dbpass, $dbhost) {
             password_hash => mysql_password($dbpass),
             provider      => 'mysql',
         }
-        mysql_grant { "${dbuser}@${::fqdn}/'dpm_db.*'":
+        mysql_grant { "${dbuser}@${::fqdn}/${lcgdm::dpm::params::dpm_db}.*":
             ensure     => 'present',
             options    => ['GRANT'],
             privileges => ['ALL'],
             provider   => 'mysql',
             user       => "${dbuser}@${::fqdn}",
-            table      => 'dpm_db.*',
-            require    => [Mysql_database['dpm_db'], Mysql_user["${dbuser}@${::fqdn}"], ],
+            table      => "${lcgdm::dpm::params::dpm_db}.*",
+            require    => [Mysql_database["${lcgdm::dpm::params::dpm_db}"], Mysql_user["${dbuser}@${::fqdn}"], ],
         }
   } 
 }

@@ -6,13 +6,13 @@ define lcgdm::dpm::grants ($user, $pass) {
       password_hash => mysql_password($pass),
       provider      => 'mysql',
     }
-    mysql_grant { "${user}@${name}/cns_db.*":
+    mysql_grant { "${user}@${name}/${lcgdm::ns::params::ns_db}.*":
       ensure     => 'present',
       options    => ['GRANT'],
       privileges => ['ALL'],
-      table      => 'cns_db.*',
+      table      => "${lcgdm::ns::params::ns_db}.*",
       user       => "${user}@${name}",
-      require    => [ Mysql_database['cns_db'], Mysql_user["${user}@${name}"] ],
+      require    => [ Mysql_database["${lcgdm::ns::params::ns_db}"], Mysql_user["${user}@${name}"] ],
   }
 }
 
