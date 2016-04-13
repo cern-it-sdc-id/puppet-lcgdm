@@ -3,6 +3,7 @@ class lcgdm::dpm::params () inherits lcgdm::base::params {
   $nshost = "${::fqdn}"
   $dbflavor = 'mysql'
   $dbhost = 'localhost'
+  $dpm_db = 'dpm_db'
   $dbmanage = true
   $active = 'yes'
   $ulimitn = 4096

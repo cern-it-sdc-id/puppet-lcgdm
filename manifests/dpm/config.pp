@@ -5,6 +5,7 @@ class lcgdm::dpm::config (
   $dbuser,
   $dbpass,
   $dbhost          = $lcgdm::dpm::params::dbhost,
+  $dpm_db          = $lcgdm::dpm::params::dpm_db,
   $dbmanage        = $lcgdm::dpm::params::dbmanage,
   $active          = $lcgdm::dpm::params::active,
   $ulimitn         = $lcgdm::dpm::params::ulimitn,

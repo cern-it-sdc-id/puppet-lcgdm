@@ -4,6 +4,7 @@ class lcgdm::ns (
   $dbuser,
   $dbpass,
   $dbhost   = $lcgdm::ns::params::dbhost,
+  $ns_db    = $lcgdm::ns::params::ns_db,
   $dbmanage = $lcgdm::ns::params::dbmanage,
   $coredump = $lcgdm::ns::params::coredump,
   $uid      = undef,
@@ -26,6 +27,7 @@ class lcgdm::ns (
     dbuser   => "${dbuser}",
     dbpass   => "${dbpass}",
     dbhost   => "${dbhost}",
+    ns_db    => "${ns_db}",
     dbmanage => $dbmanage,
     coredump => "${coredump}",
   }

@@ -3,6 +3,7 @@ class lcgdm::ns::params () inherits lcgdm::base::params {
   $host = "${::fqdn}"
   $dbflavor = 'mysql'
   $dbhost = 'localhost'
+  $ns_db = 'cns_db'
   $dbmanage = true
   $active = 'yes'
   $readonly = 'no'
