@@ -1,3 +1,7 @@
+2016-05-31  Andrea Manzi  <andrea.manzi@cern.ch>
+    * added a cron job for dpns-arguspoll
+    * added override for dpm db names
+    * added limits in the module
 2016-01-18 Frederic Schaer  <frederic.schaer@cea.fr>
     * Puppet 4 support
 2016-01-07 Andrea Manzi  <andrea.manzi@cern.ch>
