@@ -27,7 +27,7 @@ class lcgdm::ns::mysql ($flavor, $dbuser, $dbpass, $dbhost) {
             privileges => ['ALL'],
             provider   => 'mysql',
             user       => "${dbuser}@${::fqdn}",
-            table      => "${lcgdm::ns::params::ns_db}.*'",
+            table      => "${lcgdm::ns::params::ns_db}.*",
             require    => [Mysql_database["${lcgdm::ns::params::ns_db}"], Mysql_user["${dbuser}@${::fqdn}"], ],
             notify     => Class[lcgdm::ns::service]
         }
