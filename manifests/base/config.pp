@@ -75,15 +75,15 @@ class lcgdm::base::config (
       content => template('lcgdm/shift.aug');
   }
   #add notifications
-  if defined ('lcgdm::dpm::service'){
-	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::dpm::service]
-  }
-  if defined ('lcgdm::ns::service') {
-        File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::ns::service]	
-  }
-  if defined ('lcgdm::rfio::service') {
-	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::rfio::service]	
-  }
+  #if defined ('lcgdm::dpm::service'){
+  #	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::dpm::service]
+  #}
+  #if defined ('lcgdm::ns::service') {
+  #      File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::ns::service]	
+  #}
+  #if defined ('lcgdm::rfio::service') {
+  #	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::rfio::service]	
+  #}
 
   lcgdm::limits { 
 
