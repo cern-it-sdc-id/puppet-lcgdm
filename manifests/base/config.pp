@@ -76,13 +76,13 @@ class lcgdm::base::config (
   }
   #add notifications
   if defined ('lcgdm::dpm::service'){
-	File["/etc/grid-security/${user}/${cert}"] ~> Class['lcgdm::dpm::service']
+	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::dpm::service]
   }
   if defined ('lcgdm::ns::service') {
-        File["/etc/grid-security/${user}/${cert}"] ~> Class['lcgdm::ns::service']	
+        File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::ns::service]	
   }
   if defined ('lcgdm::rfio::service') {
-	File["/etc/grid-security/${user}/${cert}"] ~> Class['lcgdm::rfio::service']	
+	File["/etc/grid-security/${user}/${cert}"] ~> Class[lcgdm::rfio::service]	
   }
 
   lcgdm::limits { 
