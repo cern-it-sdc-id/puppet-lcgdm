@@ -1,7 +1,7 @@
 class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = $lcgdm::ns::params::dbflavor) inherits lcgdm::ns::params {
   Class[lcgdm::ns::install] -> Class[lcgdm::ns::service]
 
-  Class[lcgdm::base::config] ->  Class[lcgdm::dpm::service]
+  Class[lcgdm::base::config] ->  Class[lcgdm::ns::service]
   
   service { "${lcgdm::ns::config::daemon}":
     ensure     => running,
