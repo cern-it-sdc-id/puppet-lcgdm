@@ -1,13 +1,17 @@
 class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = $lcgdm::ns::params::dbflavor) inherits lcgdm::ns::params {
   Class[lcgdm::ns::install] -> Class[lcgdm::ns::service]
 
+  Class[lcgdm::base::config] ->  Class[lcgdm::dpm::service]
+  
   service { "${lcgdm::ns::config::daemon}":
     ensure     => running,
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
     name       => "${lcgdm::ns::config::daemon}",
-    subscribe  => File["${configfile}", "/etc/sysconfig/${lcgdm::ns::config::daemon}"],
+    subscribe  => File["${configfile}", "/etc/sysconfig/${lcgdm::ns::config::daemon}",
+		"/etc/grid-security/$lcgdm::base::config::user/$lcgdm::base::config::cert",
+		"/etc/grid-security/$lcgdm::base::config::user/$lcgdm::base::config::certkey"],
   }
 
  #centOS7 changes
