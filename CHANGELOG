@@ -1,3 +1,5 @@
+2016-07-08  Andrea Manzi  <andrea.manzi@cern.ch>
+    * added DPNS/DPM restart on certificate change
 2016-05-31  Andrea Manzi  <andrea.manzi@cern.ch>
     * added a cron job for dpns-arguspoll
     * added override for dpm db names
