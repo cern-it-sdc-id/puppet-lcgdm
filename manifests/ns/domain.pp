@@ -1,6 +1,8 @@
 define lcgdm::ns::domain () {
   Class[lcgdm::ns::client] -> Lcgdm::Ns::Domain <| |>
 
+  include lcgdm::ns::config
+
   $envhost = "${lcgdm::ns::config::envvar}_HOST"
   $envtimeout = "${lcgdm::ns::config::envvar}_CONNTIMEOUT"
   $envretry = "${lcgdm::ns::config::envvar}_CONNRETRY"

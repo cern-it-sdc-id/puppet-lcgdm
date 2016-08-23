@@ -1,3 +1,6 @@
+2016-08-23  Andrea Manzi  <andrea.manzi@cern.ch>
+    * update fetch-crl module
+    * fix for puppet 4.6
 2016-07-08  Andrea Manzi  <andrea.manzi@cern.ch>
     * added DPNS/DPM restart on certificate change
 2016-05-31  Andrea Manzi  <andrea.manzi@cern.ch>

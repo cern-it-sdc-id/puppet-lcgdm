@@ -2,8 +2,8 @@
   "author": "LCGDM",
   "dependencies": [
     {
-      "name": "CERNOps/fetchcrl",
-      "version_requirement": "\u003e\u003d 0.2.2"
+      "name": "puppet/fetchcrl",
+      "version_requirement": "\u003e\u003d 1.1.1"
     },
     {
       "name": "puppetlabs/stdlib",
@@ -19,5 +19,5 @@
   "source": "https://github.com/cern-it-sdc-id/puppet-lcgdm",
   "summary": "Package for managing lcgdm components",
   "tags": [],
-  "version": "0.3.3"
+  "version": "0.3.4"
 }
