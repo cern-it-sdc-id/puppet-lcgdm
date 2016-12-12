@@ -3,21 +3,21 @@
   "dependencies": [
     {
       "name": "puppet/fetchcrl",
-      "version_requirement": "\u003e\u003d 1.1.1"
+      "version_requirement": ">= 1.1.1"
     },
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": "\u003e\u003d 2.0.0"
+      "version_requirement": ">= 2.0.0"
     }
   ],
   "description": "This package provides modules for managing lcgdm components",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "name": "lcgdm-lcgdm",
   "operatingsystem_support": [],
-  "project_page": "https://svnweb.cern.ch/trac/lcgdm",
+  "project_page": "http://lcgdm.web.cern.ch/",
   "requirements": [],
   "source": "https://github.com/cern-it-sdc-id/puppet-lcgdm",
   "summary": "Package for managing lcgdm components",
   "tags": [],
-  "version": "0.3.4"
+  "version": "0.3.5"
 }
