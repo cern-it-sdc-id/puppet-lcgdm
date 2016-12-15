@@ -63,6 +63,19 @@ class lcgdm::base::config (
       seltype => 'etc_t',
       source  => '/etc/grid-security/hostkey.pem',
       require => User[$user];
+
+    [ "${settings::libdir}/augeas/", "${settings::libdir}/augeas/lenses/" ]:
+      ensure => directory;
+
+    "${settings::libdir}/augeas/lenses/shift.aug":
+       ensure  => present,
+       owner   => root,
+       group   => root,
+       mode    => '0744',
+       seluser => 'system_u',
+       selrole => 'object_r',
+       seltype => 'etc_t',
+       content => template('lcgdm/shift.aug');
   }
 
   lcgdm::limits { 
