@@ -1,3 +1,5 @@
+2016-12-15  Andrea Manzi  <andrea.manzi@cern.ch>
+    * fix for shift creation without puppet master
 2016-12-12  Andrea Manzi  <andrea.manzi@cern.ch>
     * fix for shift.conf lens on puppet 4
 2016-08-23  Andrea Manzi  <andrea.manzi@cern.ch>
