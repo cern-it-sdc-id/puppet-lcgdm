@@ -20,10 +20,10 @@ class lcgdm::dpm::service () inherits lcgdm::dpm::params {
    file{'/etc/systemd/system/multi-user.target.wants/dpm.service':
      ensure => 'link',
      target => '/usr/share/dpm-mysql/dpm.service',
-   }
+   } ->
    file{'/etc/systemd/system/dpm.service':
      ensure => link,
      target => '/usr/share/dpm-mysql/dpm.service',
-   }
- }
+   } -> Service['dpm']
+ } 
 }

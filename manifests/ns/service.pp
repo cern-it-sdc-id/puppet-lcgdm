@@ -19,10 +19,11 @@ class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = 
    file{'/etc/systemd/system/multi-user.target.wants/dpnsdaemon.service':
      ensure => 'link',
      target => '/usr/share/dpm-mysql/dpnsdaemon.service',
-   }
+   } ->
    file{'/etc/systemd/system/dpnsdaemon.service':
      ensure => link,
      target => '/usr/share/dpm-mysql/dpnsdaemon.service',
-   }
+   } 
+    -> Service["${lcgdm::ns::config::daemon}"]
  }
 }
