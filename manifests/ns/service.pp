@@ -26,7 +26,7 @@ class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = 
       file{'/etc/systemd/system/dpnsdaemon.service':
         ensure => link,
         target => '/usr/share/dpm-mysql/dpnsdaemon.service',
-      } -> Service['dpnsdaemom']
+      } -> Service['dpnsdaemon']
     }
     lfcdaemon : {
       file{'/etc/systemd/system/multi-user.target.wants/lfcdaemon.service':
@@ -36,7 +36,7 @@ class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = 
       file{'/etc/systemd/system/lfcdaemon.service':
         ensure => link,
         target => '/usr/share/lfc-mysql/lfcdaemon.service',
-      } ->  Service['lfcdaemom']
+      } ->  Service['lfcdaemon']
     }
   }
  }
