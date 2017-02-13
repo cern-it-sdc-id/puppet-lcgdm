@@ -14,16 +14,31 @@ class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = 
 		"/etc/grid-security/$lcgdm::base::config::user/$lcgdm::base::config::certkey"],
   }
 
+
  #centOS7 changes
  if $::operatingsystemmajrelease and ($::operatingsystemmajrelease + 0) >= 7 {
-   file{'/etc/systemd/system/multi-user.target.wants/dpnsdaemon.service':
-     ensure => 'link',
-     target => '/usr/share/dpm-mysql/dpnsdaemon.service',
-   } ->
-   file{'/etc/systemd/system/dpnsdaemon.service':
-     ensure => link,
-     target => '/usr/share/dpm-mysql/dpnsdaemon.service',
-   } 
-    -> Service["${lcgdm::ns::config::daemon}"]
+   case $lcgdm::ns::config::daemon {
+    dpnsdaemon : {
+      file{'/etc/systemd/system/multi-user.target.wants/dpnsdaemon.service':
+        ensure => 'link',
+        target => '/usr/share/dpm-mysql/dpnsdaemon.service',
+      } ->
+      file{'/etc/systemd/system/dpnsdaemon.service':
+        ensure => link,
+        target => '/usr/share/dpm-mysql/dpnsdaemon.service',
+      } -> Service['dpnsdaemom']
+    }
+    lfcdaemon : {
+      file{'/etc/systemd/system/multi-user.target.wants/lfcdaemon.service':
+        ensure => 'link',
+        target => '/usr/share/lfc-mysql/lfcdaemon.service',
+      } ->
+      file{'/etc/systemd/system/lfcdaemon.service':
+        ensure => link,
+        target => '/usr/share/lfc-mysql/lfcdaemon.service',
+      } ->  Service['lfcdaemom']
+    }
+  }
  }
+
 }
