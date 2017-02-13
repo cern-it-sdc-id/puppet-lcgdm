@@ -64,9 +64,9 @@ class lcgdm::base::config (
       source  => '/etc/grid-security/hostkey.pem',
       require => User[$user];
 
-    [ "${settings::libdir}/augeas/", "${settings::libdir}/augeas/lenses/" ]:
+    [ "${settings::libdir}", "${settings::libdir}/augeas/", "${settings::libdir}/augeas/lenses/" ]:
       ensure => directory;
-
+    
     "${settings::libdir}/augeas/lenses/shift.aug":
        ensure  => present,
        owner   => root,
