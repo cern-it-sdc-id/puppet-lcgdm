@@ -64,17 +64,17 @@ class lcgdm::base::config (
       source  => '/etc/grid-security/hostkey.pem',
       require => User[$user];
 
-    [ "${settings::libdir}", "${settings::libdir}/augeas/", "${settings::libdir}/augeas/lenses/" ]:
+    [ "$puppet_vardir/lib", "$puppet_vardir/lib/augeas/", "$puppet_vardir/lib/augeas/lenses/" ]:
       ensure => directory;
     
-    "${settings::libdir}/augeas/lenses/shift.aug":
+    "$puppet_vardir/lib/augeas/lenses/shift.aug":
        ensure  => present,
        owner   => root,
        group   => root,
        mode    => '0744',
        seluser => 'system_u',
        selrole => 'object_r',
-       seltype => 'etc_t',
+       seltype => 'puppet_var_lib_t',
        content => template('lcgdm/shift.aug');
   }
 
