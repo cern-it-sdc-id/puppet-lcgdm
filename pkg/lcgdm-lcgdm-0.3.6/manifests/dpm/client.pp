@@ -1,3 +1,0 @@
-class lcgdm::dpm::client () {
-
-}
