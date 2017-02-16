@@ -1,4 +1,4 @@
-class lcgdm::ns::client ($flavor = undef, $dpmhost = $lcgdm::dpm::config::host) {
+class lcgdm::ns::client ($flavor = undef, $dpmhost = undef) {
   case $flavor {
     cns     : { $clientpkg = 'cns' }
     dpns    : { $clientpkg = 'dpm' }

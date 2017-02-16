@@ -1,3 +1,8 @@
+2017-02-15  Andrea Manzi  <andrea.manzi@cern.ch>
+    * use puppet_vardir facter to relolve the plugin folder ( needed to support masterless deployments)
+    * change SELinux label on shift.conf
+    * remove puppet 4 warnings
+    * add dependency to service when enabling the srm/dpm/dpns 
 2016-12-15  Andrea Manzi  <andrea.manzi@cern.ch>
     * fix for shift creation without puppet master
 2016-12-12  Andrea Manzi  <andrea.manzi@cern.ch>
