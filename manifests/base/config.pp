@@ -33,6 +33,12 @@ class lcgdm::base::config (
       seltype => 'etc_t',
     }
   }
+  if versioncmp($::puppetversion, '4.0.0') < 0 {
+    $lens_sel_type	= 'puppet_var_lib_t'
+  }
+  else {
+    $lens_sel_type	= 'lib_t'
+  }
   file {
     "/etc/grid-security/${user}":
       ensure  => directory,
@@ -74,7 +80,7 @@ class lcgdm::base::config (
        mode    => '0744',
        seluser => 'system_u',
        selrole => 'object_r',
-       seltype => 'puppet_var_lib_t',
+       seltype => $lens_sel_type,
        content => template('lcgdm/shift.aug');
   }
 
