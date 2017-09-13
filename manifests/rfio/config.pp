@@ -10,6 +10,10 @@ class lcgdm::rfio::config (
 
   Class[lcgdm::base::config] -> Class[lcgdm::rfio::config]
 
+  $lcgdm_user = $lcgdm::base::config::user
+  $lcgdm_cert = $lcgdm::base::config::cert
+  $lcgdm_certkey = $lcgdm::base::config::certkey
+
   file { '/etc/sysconfig/rfiod':
     owner   => root,
     group   => root,

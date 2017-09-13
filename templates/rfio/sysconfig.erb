@@ -38,6 +38,11 @@ RFIO_PORT_RANGE="<%= @portrange %>"
 # - gridmapdir location
 #GRIDMAPDIR=/etc/grid-security/gridmapdir
 
+X509_USER_KEY="/etc/grid-security/<%=@lcgdm_user%>/<%=@lcgdm_certkey%>"
+X509_USER_CERT="/etc/grid-security/<%=@lcgdm_user%>/<%=@lcgdm_cert%>"
+export X509_USER_KEY
+export X509_USER_CERT
+
 #########################
 # RFIOD Startup Options #
 #########################
