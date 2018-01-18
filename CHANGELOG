@@ -1,3 +1,5 @@
+2018-01-18  Andrea Manzi  <andrea.manzi@cern.ch>
+    * add credentials conf for rfiod on c7
 2017-06-22  Andrea Manzi  <andrea.manzi@cern.ch>
     * merge PR from Alexandr Mikula to fix selinux type on lens file
 2017-02-15  Andrea Manzi  <andrea.manzi@cern.ch>
