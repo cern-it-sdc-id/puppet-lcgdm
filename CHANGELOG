@@ -1,3 +1,5 @@
+2019-02-11  Petr Vokac  <petr.vokac@cern.ch>
+    * add unset for shift.conf
 2018-01-18  Andrea Manzi  <andrea.manzi@cern.ch>
     * add credentials conf for rfiod on c7
 2017-06-22  Andrea Manzi  <andrea.manzi@cern.ch>
