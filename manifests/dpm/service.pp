@@ -15,7 +15,7 @@ class lcgdm::dpm::service () inherits lcgdm::dpm::params {
   }
 
    #centOS7 changes
- if $::operatingsystemmajrelease and ($::operatingsystemmajrelease + 0) >= 7 {
+ if versioncmp($facts['os']['release']['major'], '7') >= 0 {
 
    file{'/etc/systemd/system/multi-user.target.wants/dpm.service':
      ensure => 'link',
