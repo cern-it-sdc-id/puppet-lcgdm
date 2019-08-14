@@ -24,6 +24,7 @@ class lcgdm::dpm::install () inherits lcgdm::dpm::params {
     Class[lcgdm::dpm::mysql] -> Class[lcgdm::dpm::service]
 
     class { 'lcgdm::dpm::mysql':
+      dbname  => $lcgdm::dpm::config::dpm_db,
       dbuser  => $lcgdm::dpm::config::dbuser,
       dbpass  => $lcgdm::dpm::config::dbpass,
       dbhost  => $lcgdm::dpm::config::dbhost,

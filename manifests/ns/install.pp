@@ -25,6 +25,7 @@ class lcgdm::ns::install () inherits lcgdm::ns::params {
 
     class { 'lcgdm::ns::mysql':
       flavor  => $lcgdm::ns::config::flavor,
+      dbname  => $lcgdm::ns::config::ns_db,
       dbuser  => $lcgdm::ns::config::dbuser,
       dbpass  => $lcgdm::ns::config::dbpass,
       dbhost  => $lcgdm::ns::config::dbhost,
