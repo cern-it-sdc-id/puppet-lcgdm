@@ -16,7 +16,7 @@ class lcgdm::ns::service ($dbmanage = $lcgdm::ns::params::dbmanage, $dbflavor = 
 
 
  #centOS7 changes
- if $::operatingsystemmajrelease and ($::operatingsystemmajrelease + 0) >= 7 {
+ if versioncmp($facts['os']['release']['major'], '7') >= 0 {
    case $lcgdm::ns::config::daemon {
     dpnsdaemon : {
       file{'/etc/systemd/system/multi-user.target.wants/dpnsdaemon.service':
