@@ -8,7 +8,7 @@ This is the puppet-lcgdm module, it configures the DPM/LFC legacy components dev
 ASL 2.0
 
 ### Contact
-Andrea Manzi <andrea.manzi@cern.ch>
+DPM Devel <dpm-devel-cern@cern.ch>
 
 ## Support
-Tickets and issues at our [cern-it-sdc-id site](https://github.com/cern-it-sdc-id)
+Tickets and issues at our [Jira](https://its.cern.ch/jira/projects/LCGDM)
